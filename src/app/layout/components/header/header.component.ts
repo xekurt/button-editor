@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
-import { ThemeToggleButton } from '../../../components/theme-toggle-button/theme-toggle.component';
+import { ThemeToggleButton } from '../theme-toggle-button/theme-toggle.component';
 
 @Component({
   selector: 'app-header',
