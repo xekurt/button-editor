@@ -13,7 +13,8 @@
     "module": "es2020",
     "lib": ["es2020", "dom"],
     "paths": {
-      "@shared/*": ["app/shared/*"],
+      "@services/*": ["app/services/*"],
+      "@layout/*": ["app/layuout/*"],
       "@modules/*": ["app/modules/*"],
       "@playgroundModule/*": ["app/modules/playground-module/*"],
       "@documentationModule/*": ["app/modules/documentation-module/*"],
