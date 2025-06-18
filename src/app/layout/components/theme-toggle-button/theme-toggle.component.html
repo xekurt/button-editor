@@ -1,6 +1,6 @@
-<div class="flex items-center space-x-sm">
+<div class="space-x-sm flex items-center">
   <div
-    class="relative inline-flex items-center h-6 w-12 rounded-full bg-neutral-200 cursor-pointer transition-colors duration-200 ease-in-out"
+    class="relative inline-flex h-6 w-12 cursor-pointer items-center rounded-full bg-neutral-200 transition-colors duration-200 ease-in-out"
     role="switch"
     [attr.aria-checked]="(themeService.theme$ | async) === 'dark'"
     aria-label="Toggle theme"
@@ -9,14 +9,14 @@
     (keydown)="handleKeydown($event)"
   >
     <span
-      class="absolute h-5 w-5 rounded-full bg-primary transform transition-transform duration-200 ease-in-out"
+      class="bg-primary absolute h-5 w-5 transform rounded-full transition-transform duration-200 ease-in-out"
       [ngClass]="{
         'translate-x-6': (themeService.theme$ | async) === 'dark',
-        'translate-x-1': (themeService.theme$ | async) !== 'dark'
+        'translate-x-1': (themeService.theme$ | async) !== 'dark',
       }"
     ></span>
   </div>
-  <span class="text-sm text-text-light dark:text-text-dark font-sans">
+  <span class="text-text-light dark:text-text-dark font-sans text-sm">
     {{ themeService.theme$ | async | uppercase }}
   </span>
 </div>

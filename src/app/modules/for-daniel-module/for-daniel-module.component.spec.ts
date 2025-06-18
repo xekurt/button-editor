@@ -8,9 +8,8 @@ describe('ForDanielModuleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ForDanielModuleComponent]
-    })
-    .compileComponents();
+      imports: [ForDanielModuleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ForDanielModuleComponent);
     component = fixture.componentInstance;
