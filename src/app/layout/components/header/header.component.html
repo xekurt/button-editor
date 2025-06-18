@@ -1,0 +1,16 @@
+<header
+  class="bg-neutral-50 dark:bg-neutral-900 p-md flex justify-between items-center shadow-sm"
+>
+  <h1 class="text-xl font-semibold text-text-light dark:text-text-dark">
+    Web Components Admin
+  </h1>
+  <div class="flex items-center space-x-sm">
+    <button
+      (click)="toggleTheme()"
+      class="p-sm rounded-md bg-primary text-text-dark dark:bg-primary-dark dark:text-text-light hover:opacity-80 transition-opacity-transform"
+      aria-label="Toggle theme"
+    >
+      {{ themeService.theme$ | async | uppercase }} Mode
+    </button>
+  </div>
+</header>
