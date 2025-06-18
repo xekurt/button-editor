@@ -3,31 +3,15 @@
 >
   <nav class="p-md">
     <ul class="space-y-xs">
-      <li>
+      <li *ngFor="let link of sidebarLinks">
         <a
-          routerLink="/playground"
+          [routerLink]="link.route"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
           class="p-sm hover:bg-primary-light dark:hover:bg-primary-dark transition-opacity-transform block rounded-md hover:text-text-dark"
-          aria-label="Playground"
+          [attr.aria-label]="link.aria"
         >
-          Playground
-        </a>
-      </li>
-      <li>
-        <a
-          routerLink="/documentation"
-          class="p-sm hover:bg-primary-light dark:hover:bg-primary-dark transition-opacity-transform block rounded-md hover:text-text-dark"
-          aria-label="Documentation"
-        >
-          Documentation
-        </a>
-      </li>
-      <li>
-        <a
-          routerLink="/for-daniel"
-          class="p-sm hover:bg-primary-light dark:hover:bg-primary-dark transition-opacity-transform block rounded-md hover:text-text-dark"
-          aria-label="for daniel"
-        >
-          For Daniel
+          {{ link.label }}
         </a>
       </li>
     </ul>
