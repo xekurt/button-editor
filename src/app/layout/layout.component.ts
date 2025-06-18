@@ -11,4 +11,9 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './layout.component.html',
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class DashboardLayout {}
+export class DashboardLayout {
+  sidebarOpen = false;
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+}

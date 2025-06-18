@@ -1,5 +1,5 @@
 // src/app/components/sidebar/sidebar.component.ts
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 
@@ -11,6 +11,7 @@ import { RouterModule, Router } from '@angular/router';
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
+  @Input() open = false;
   sidebarLinks = [
     { label: 'Playground', route: '/playground', aria: 'Playground' },
     { label: 'Documentation', route: '/documentation', aria: 'Documentation' },
