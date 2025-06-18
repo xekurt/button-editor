@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { DashboardLayout } from '@shared/layout/layout.component';
+import { Component, inject } from '@angular/core';
+import { DashboardLayout } from './layout/layout.component';
 
 @Component({
   selector: 'app-root',
