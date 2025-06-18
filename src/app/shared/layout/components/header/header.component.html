@@ -1,0 +1,13 @@
+<header
+  class="bg-white dark:bg-gray-800 shadow-md p-4 flex justify-between items-center"
+>
+  <h1 class="text-xl font-bold text-gray-900 dark:text-white">
+    Angular Dashboard
+  </h1>
+  <button
+    (click)="toggleTheme()"
+    class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white"
+  >
+    {{ themeService.theme$ | async | uppercase }} Mode
+  </button>
+</header>
