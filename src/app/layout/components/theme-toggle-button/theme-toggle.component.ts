@@ -7,7 +7,7 @@ import { ThemeService } from '@services/theme.service';
   templateUrl: './theme-toggle.component.html',
   imports: [CommonModule],
 })
-export class ThemeToggleButton {
+export class ThemeToggleButtonComponent {
   themeService: ThemeService = inject(ThemeService);
   toggleTheme() {
     this.themeService.toggleTheme();

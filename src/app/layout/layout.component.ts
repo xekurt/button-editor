@@ -10,4 +10,5 @@ import { RouterOutlet } from '@angular/router';
   imports: [CommonModule, HeaderComponent, SidebarComponent, RouterOutlet],
   templateUrl: './layout.component.html',
 })
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class DashboardLayout {}

@@ -1,14 +1,14 @@
 // src/app/components/header/header.component.ts
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
-import { ThemeToggleButton } from '../theme-toggle-button/theme-toggle.component';
+import { ThemeToggleButtonComponent } from '../theme-toggle-button/theme-toggle.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule, ThemeToggleButton],
+  imports: [CommonModule, RouterModule, ThemeToggleButtonComponent],
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {}

@@ -1,4 +1,3 @@
-// eslint.config.js
 import tsParser from '@typescript-eslint/parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import ngPlugin from '@angular-eslint/eslint-plugin';
@@ -8,17 +7,18 @@ import importPlugin from 'eslint-plugin-import';
 import prettierPlugin from 'eslint-plugin-prettier';
 
 export default [
-  // ignore build artifacts
-  { ignores: ['node_modules/', 'dist/', '.git/'] },
+  // Ignore common folders
+  { ignores: ['**/node_modules/**', '**/dist/**', '**/.git/**'] },
 
-  // TS / Angular code
+  // TypeScript & Angular code
   {
-    files: ['*.ts'],
+    files: ['**/*.ts'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: ['./tsconfig.json', './tsconfig.app.json', './tsconfig.spec.json'],
-        createDefaultProgram: false,
+        project: ['./tsconfig.json'],
+        tsconfigRootDir: process.cwd(),
+        sourceType: 'module',
       },
     },
     plugins: {
@@ -27,30 +27,40 @@ export default [
       import: importPlugin,
       prettier: prettierPlugin,
     },
-    extends: [
-      'plugin:@angular-eslint/recommended',
-      'plugin:@angular-eslint/template/process-inline-templates',
-      'plugin:@typescript-eslint/recommended',
-      'plugin:import/recommended',
-      'plugin:import/typescript',
-      'prettier',
-    ],
+    settings: {
+     'import/resolver': {
+       typescript: {
+         project: ['./tsconfig.json'],
+       },
+     },
+   },
     rules: {
-      // run Prettier as an ESLint rule
+      // TypeScript recommended
+      ...tsPlugin.configs.recommended.rules,
+      // Angular recommended
+      ...ngPlugin.configs['recommended'].rules,
+      // Import recommended
+      ...importPlugin.configs.recommended.rules,
+      // Prettier recommended
+      ...prettierPlugin.configs.recommended.rules,
+
+      // Customizations
       'prettier/prettier': ['error'],
-      // your overrides…
       '@typescript-eslint/explicit-function-return-type': 'off',
+      '@angular-eslint/component-class-suffix': ['error', { suffixes: ['Component','Module'] }],
+      '@angular-eslint/directive-class-suffix': ['error', { suffixes: ['Directive'] }],
+      '@angular-eslint/no-empty-lifecycle-method': 'warn',
     },
   },
 
   // Angular HTML templates
   {
-    files: ['*.html'],
-    plugins: { '@angular-eslint/template': tplPlugin },
+    files: ['**/*.html'],
     languageOptions: { parser: tplParser },
-    extends: ['plugin:@angular-eslint/template/recommended'],
+    plugins: { '@angular-eslint/template': tplPlugin },
     rules: {
-      // e.g. turn warnings into errors
+      ...tplPlugin.configs['recommended'].rules,
+      // Custom template rules can go here
     },
   },
 ];
