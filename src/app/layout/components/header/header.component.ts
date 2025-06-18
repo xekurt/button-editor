@@ -3,17 +3,12 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
-import { ThemeService } from '@services/theme.service';
+import { ThemeToggleButton } from '../../../components/theme-toggle-button/theme-toggle.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ThemeToggleButton],
   templateUrl: './header.component.html',
 })
-export class HeaderComponent {
-  themeService: ThemeService = inject(ThemeService);
-  toggleTheme() {
-    this.themeService.toggleTheme();
-  }
-}
+export class HeaderComponent {}
