@@ -32,7 +32,9 @@
         <a
           [routerLink]="link.route"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLinkActiveOptions]="{
+            exact: true,
+          }"
           class="p-sm hover:bg-primary-light dark:hover:bg-primary-dark transition-opacity-transform hover:text-text-dark block rounded-md"
           [attr.aria-label]="link.aria"
         >

@@ -8,7 +8,9 @@ import prettierPlugin from 'eslint-plugin-prettier';
 
 export default [
   // Ignore common folders
-  { ignores: ['**/node_modules/**', '**/dist/**', '**/.git/**'] },
+  {
+    ignores: ['**/node_modules/**', '**/dist/**', '**/.git/**'],
+  },
 
   // TypeScript & Angular code
   {
@@ -47,7 +49,12 @@ export default [
       // Customizations
       'prettier/prettier': ['error'],
       '@typescript-eslint/explicit-function-return-type': 'off',
-      '@angular-eslint/component-class-suffix': ['error', { suffixes: ['Component', 'Module'] }],
+      '@angular-eslint/component-class-suffix': [
+        'error',
+        {
+          suffixes: ['Component', 'Module'],
+        },
+      ],
       '@angular-eslint/directive-class-suffix': ['error', { suffixes: ['Directive'] }],
       '@angular-eslint/no-empty-lifecycle-method': 'warn',
     },
@@ -56,8 +63,12 @@ export default [
   // Angular HTML templates
   {
     files: ['**/*.html'],
-    languageOptions: { parser: tplParser },
-    plugins: { '@angular-eslint/template': tplPlugin },
+    languageOptions: {
+      parser: tplParser,
+    },
+    plugins: {
+      '@angular-eslint/template': tplPlugin,
+    },
     rules: {
       ...tplPlugin.configs['recommended'].rules,
       // Custom template rules can go here

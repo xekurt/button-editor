@@ -13,9 +13,21 @@ import { RouterModule, Router } from '@angular/router';
 export class SidebarComponent {
   @Input() open = false;
   sidebarLinks = [
-    { label: 'Playground', route: '/playground', aria: 'Playground' },
-    { label: 'Documentation', route: '/documentation', aria: 'Documentation' },
-    { label: 'For Daniel', route: '/for-daniel', aria: 'for daniel' },
+    {
+      label: 'Playground',
+      route: '/playground',
+      aria: 'Playground',
+    },
+    {
+      label: 'Documentation',
+      route: '/documentation',
+      aria: 'Documentation',
+    },
+    {
+      label: 'For Daniel',
+      route: '/for-daniel',
+      aria: 'for daniel',
+    },
   ];
   constructor(public router: Router) {}
   closeSidebar() {

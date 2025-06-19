@@ -5,7 +5,7 @@
         <!-- Dropdown header -->
         <button
           (click)="toggleDropdown(i)"
-          class="flex w-full items-center justify-between rounded-t-2xl bg-neutral-50 px-6 py-4 shadow-lg shadow-neutral-200 dark:bg-neutral-800 dark:shadow-neutral-900 cursor-pointer"
+          class="flex w-full cursor-pointer items-center justify-between rounded-t-2xl bg-neutral-50 px-6 py-4 shadow-lg shadow-neutral-200 dark:bg-neutral-800 dark:shadow-neutral-900"
           [attr.aria-expanded]="openDropdowns[i]"
           [attr.aria-controls]="'variant-panel-' + i"
           id="variant-header-{{ i }}"
@@ -14,10 +14,13 @@
           <span
             class="inline-block rounded bg-neutral-200 px-4 py-2 text-lg font-bold tracking-wide text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100"
           >
-            {{ variant.charAt(0).toUpperCase() + variant.slice(1) }} Variant
+            {{ variant.charAt(0).toUpperCase() + variant.slice(1) }}
+            Variant
           </span>
           <svg
-            [ngClass]="{ 'rotate-180': openDropdowns[i] }"
+            [ngClass]="{
+              'rotate-180': openDropdowns[i],
+            }"
             class="ml-2 h-5 w-5 transition-transform duration-200"
             fill="none"
             stroke="currentColor"
@@ -45,7 +48,8 @@
                 <app-custom-button [variant]="variant" [state]="state">
                   {{ variant.charAt(0).toUpperCase() + variant.slice(1)
                   }}<ng-container *ngIf="state !== 'default'">
-                    - {{ state.charAt(0).toUpperCase() + state.slice(1) }}</ng-container
+                    -
+                    {{ state.charAt(0).toUpperCase() + state.slice(1) }}</ng-container
                   >
                 </app-custom-button>
               </div>
