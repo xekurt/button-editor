@@ -39,6 +39,19 @@
           [id]="'variant-panel-' + i"
         >
           <div class="grid w-full grid-cols-1 gap-6">
+            <!-- Sizes List -->
+             <ng-container *ngFor="let size of sizes; let k = index">
+              <div class="flex flex-col items-start">
+                <!-- Show status label above button on mobile only -->
+                <span class="mb-2 block text-center text-base font-semibold md:hidden">{{
+                  sizes[k]
+                }}</span>
+                <app-custom-button class="capitalize" [variant]="variant" [size]="size">
+                  {{variant }} - {{ size}}
+                </app-custom-button>
+              </div>
+            </ng-container>
+            <!-- States List -->
             <ng-container *ngFor="let state of states; let j = index">
               <div class="flex flex-col items-start">
                 <!-- Show status label above button on mobile only -->
@@ -47,16 +60,21 @@
                 }}</span>
                 <app-custom-button [variant]="variant" [state]="state">
                   {{ variant.charAt(0).toUpperCase() + variant.slice(1)
-                  }}<ng-container *ngIf="state !== 'default'">
+                  }}<ng-container>
                     -
                     {{ state.charAt(0).toUpperCase() + state.slice(1) }}</ng-container
                   >
                 </app-custom-button>
               </div>
             </ng-container>
+           <!-- Link -->
+            <app-custom-button variant="tertiary" target="_blank" class="hover:bg-transparent" href="https://www.google.com">
+             <span slot="content" class="underline">Link button</span>
+             </app-custom-button>
           </div>
         </div>
       </div>
     </ng-container>
+    
   </div>
 </section>
