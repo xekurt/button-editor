@@ -1,1 +1,0 @@
-import{za as o}from"./chunk-INWEDYOZ.js";var i=(()=>{class e{static{this.\u0275fac=function(t){return new(t||e)}}static{this.\u0275cmp=o({type:e,selectors:[["app-playground-module"]],decls:0,vars:0,template:function(t,r){},encapsulation:2})}}return e})();export{i as PlaygroundModule};
