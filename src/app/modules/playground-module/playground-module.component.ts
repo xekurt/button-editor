@@ -12,4 +12,9 @@ export class PlaygroundModule {
   statuses = ['Active', 'Inactive', 'Pending'];
   variants: Array<'primary' | 'secondary' | 'tertiary'> = ['primary', 'secondary', 'tertiary'];
   states: Array<'default' | 'disabled' | 'loading'> = ['default', 'disabled', 'loading'];
+  openDropdowns: boolean[] = [true, false, false];
+
+  toggleDropdown(idx: number) {
+    this.openDropdowns[idx] = !this.openDropdowns[idx];
+  }
 }

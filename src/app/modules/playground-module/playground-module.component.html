@@ -1,27 +1,42 @@
 <section class="p-4 sm:p-6">
-  <!-- Hide statuses header on mobile, show only on md+ -->
-  <div class="hidden md:grid grid-cols-3 gap-4 sm:gap-6 mb-4">
-    <div class="text-center font-semibold text-base" *ngFor="let status of statuses">{{ status }}</div>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
     <ng-container *ngFor="let variant of variants; let i = index">
-      <div class="border-2 rounded-lg p-4 flex flex-col items-center bg-neutral-50 dark:bg-neutral-800">
-        <!-- Variant indicator row (always visible) -->
-        <div class="w-full flex justify-center mb-2">
-          <span class="inline-block rounded px-3 py-1 font-bold text-base bg-neutral-200 dark:bg-neutral-700 text-neutral-800 dark:text-neutral-100">
+      <div class="p-0 flex flex-col items-center justify-start">
+        <!-- Dropdown header -->
+        <button
+          (click)="toggleDropdown(i)"
+          class="w-full flex items-center justify-between px-6 py-4 bg-neutral-50 rounded-t-2xl  dark:bg-neutral-800 shadow-lg shadow-neutral-200 dark:shadow-neutral-900"
+          [attr.aria-expanded]="openDropdowns[i]"
+          [attr.aria-controls]="'variant-panel-' + i"
+          id="variant-header-{{i}}"
+          type="button"
+        >
+          <span class="inline-block rounded px-4 py-2 font-bold text-lg bg-neutral-200 dark:bg-neutral-700 text-neutral-800 dark:text-neutral-100 tracking-wide">
             {{ variant.charAt(0).toUpperCase() + variant.slice(1) }} Variant
           </span>
-        </div>
-        <div class="w-full grid grid-cols-1 gap-4">
-          <ng-container *ngFor="let state of states; let j = index">
-            <div class="flex flex-col items-center">
-              <!-- Show status label above button on mobile only -->
-              <span class="block md:hidden text-center font-semibold text-base mb-2">{{ statuses[j] }}</span>
-              <app-custom-button [variant]="variant" [state]="state">
-                {{ variant.charAt(0).toUpperCase() + variant.slice(1) }}<ng-container *ngIf="state !== 'default'"> - {{ state.charAt(0).toUpperCase() + state.slice(1) }}</ng-container>
-              </app-custom-button>
-            </div>
-          </ng-container>
+          <svg [ngClass]="{'rotate-180': openDropdowns[i]}" class="w-5 h-5 ml-2 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div
+          *ngIf="openDropdowns[i]"
+          class="w-full px-6 pb-6 pt-2 bg-neutral-50 rounded-b-2xl  dark:bg-neutral-800 shadow-lg shadow-neutral-200 dark:shadow-neutral-900"
+          role="region"
+          [attr.aria-labelledby]="'variant-header-' + i"
+          [id]="'variant-panel-' + i"
+        >
+          <div class="w-full grid grid-cols-1 gap-6">
+            <ng-container *ngFor="let state of states; let j = index">
+              <div class="flex flex-col items-start">
+                <!-- Show status label above button on mobile only -->
+                <span class="block md:hidden text-center font-semibold text-base mb-2">{{ statuses[j] }}</span>
+                <app-custom-button [variant]="variant" [state]="state">
+                  {{ variant.charAt(0).toUpperCase() + variant.slice(1) }}<ng-container *ngIf="state !== 'default'"> - {{ state.charAt(0).toUpperCase() + state.slice(1) }}</ng-container>
+                </app-custom-button>
+              </div>
+            </ng-container>
+          </div>
         </div>
       </div>
     </ng-container>

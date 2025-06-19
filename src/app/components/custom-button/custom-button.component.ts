@@ -19,7 +19,7 @@ export class CustomButtonComponent {
 
   get classes() {
     const base =
-      'inline-flex items-center justify-center font-medium rounded focus:outline-none transition-colors duration-150 cursor-pointer';
+      'inline-flex items-center justify-center font-medium rounded transition-colors duration-150 cursor-pointer';
     const variants: Record<string, string> = {
       primary: 'bg-primary text-neutral-50 hover:bg-primary-dark',
       secondary:
