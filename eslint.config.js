@@ -28,12 +28,12 @@ export default [
       prettier: prettierPlugin,
     },
     settings: {
-     'import/resolver': {
-       typescript: {
-         project: ['./tsconfig.json'],
-       },
-     },
-   },
+      'import/resolver': {
+        typescript: {
+          project: ['./tsconfig.json'],
+        },
+      },
+    },
     rules: {
       // TypeScript recommended
       ...tsPlugin.configs.recommended.rules,
@@ -47,7 +47,7 @@ export default [
       // Customizations
       'prettier/prettier': ['error'],
       '@typescript-eslint/explicit-function-return-type': 'off',
-      '@angular-eslint/component-class-suffix': ['error', { suffixes: ['Component','Module'] }],
+      '@angular-eslint/component-class-suffix': ['error', { suffixes: ['Component', 'Module'] }],
       '@angular-eslint/directive-class-suffix': ['error', { suffixes: ['Directive'] }],
       '@angular-eslint/no-empty-lifecycle-method': 'warn',
     },

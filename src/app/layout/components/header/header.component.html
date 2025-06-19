@@ -1,15 +1,28 @@
-<header class="px-4 py-2 flex flex-col gap-2 md:flex-row md:items-center md:justify-between bg-neutral-50 shadow-sm dark:bg-neutral-900">
-  <div class="flex items-center justify-between w-full">
+<header
+  class="flex flex-col gap-2 bg-neutral-50 px-4 py-2 shadow-sm md:flex-row md:items-center md:justify-between dark:bg-neutral-900"
+>
+  <div class="flex w-full items-center justify-between">
     <button
-      class="md:hidden mr-2 p-2 rounded bg-neutral-200 dark:bg-neutral-700"
+      class="mr-2 rounded bg-neutral-200 p-2 md:hidden dark:bg-neutral-700"
       (click)="toggleSidebar.emit()"
       aria-label="Toggle sidebar"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
       </svg>
     </button>
-    <h1 class="font-sans text-lg md:text-xl font-semibold hidden md:block">Web Components Admin</h1>
-    <div class="flex items-center space-x-2 ml-auto"><theme-toggle-button /></div>
+    <h1 class="hidden font-sans text-lg font-semibold md:block md:text-xl">Web Components Admin</h1>
+    <div class="ml-auto flex items-center space-x-2"><theme-toggle-button /></div>
   </div>
 </header>

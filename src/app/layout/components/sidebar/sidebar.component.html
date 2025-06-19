@@ -1,14 +1,30 @@
 <aside
-  [ngClass]="open ? 'block fixed z-30 inset-0 w-screen h-full bg-neutral-100 dark:bg-neutral-800 transition-all duration-300 ease-in-out translate-x-0' : 'fixed z-30 inset-0 w-64 h-full bg-neutral-100 dark:bg-neutral-800 transition-all duration-300 ease-in-out -translate-x-full md:translate-x-0 md:block md:static md:w-64'"
+  [ngClass]="
+    open
+      ? 'fixed inset-0 z-30 block h-full w-screen translate-x-0 bg-neutral-100 transition-all duration-300 ease-in-out dark:bg-neutral-800'
+      : 'fixed inset-0 z-30 h-full w-64 -translate-x-full bg-neutral-100 transition-all duration-300 ease-in-out md:static md:block md:w-64 md:translate-x-0 dark:bg-neutral-800'
+  "
 >
   <nav class="p-md pt-2xl">
     <button
       (click)="closeSidebar()"
-      class="absolute top-2 right-4 bg-transparent border-none p-2 cursor-pointer flex items-center justify-center z-40 md:hidden"
+      class="absolute top-2 right-4 z-40 flex cursor-pointer items-center justify-center border-none bg-transparent p-2 md:hidden"
       aria-label="Close sidebar"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
       </svg>
     </button>
     <ul class="space-y-xs">
@@ -17,7 +33,7 @@
           [routerLink]="link.route"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
-          class="p-sm hover:bg-primary-light dark:hover:bg-primary-dark transition-opacity-transform block rounded-md hover:text-text-dark"
+          class="p-sm hover:bg-primary-light dark:hover:bg-primary-dark transition-opacity-transform hover:text-text-dark block rounded-md"
           [attr.aria-label]="link.aria"
         >
           {{ link.label }}
