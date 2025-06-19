@@ -5,7 +5,7 @@
         <!-- Dropdown header -->
         <button
           (click)="toggleDropdown(i)"
-          class="flex w-full items-center justify-between rounded-t-2xl bg-neutral-50 px-6 py-4 shadow-lg shadow-neutral-200 dark:bg-neutral-800 dark:shadow-neutral-900"
+          class="flex w-full items-center justify-between rounded-t-2xl bg-neutral-50 px-6 py-4 shadow-lg shadow-neutral-200 dark:bg-neutral-800 dark:shadow-neutral-900 cursor-pointer"
           [attr.aria-expanded]="openDropdowns[i]"
           [attr.aria-controls]="'variant-panel-' + i"
           id="variant-header-{{ i }}"
