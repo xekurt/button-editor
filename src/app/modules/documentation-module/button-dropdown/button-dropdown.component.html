@@ -1,11 +1,9 @@
 <div class="flex flex-col items-center justify-start p-0">
   <!-- Dropdown header -->
   <button
-    (click)="toggle(index)"
+    (click)="toggle()"
     class="flex w-full cursor-pointer items-center justify-between rounded-t-2xl bg-neutral-50 px-6 py-4 shadow-lg shadow-neutral-200 dark:bg-neutral-800 dark:shadow-neutral-900"
     [attr.aria-expanded]="isOpen"
-    [attr.aria-controls]="'variant-panel-' + index"
-    id="variant-header-{{ index }}"
     type="button"
   >
     <span
@@ -32,8 +30,6 @@
     *ngIf="isOpen"
     class="w-full rounded-b-2xl bg-neutral-50 px-6 pt-2 pb-6 shadow-lg shadow-neutral-200 dark:bg-neutral-800 dark:shadow-neutral-900"
     role="region"
-    [attr.aria-labelledby]="'variant-header-' + index"
-    [id]="'variant-panel-' + index"
   >
     <div class="grid w-full grid-cols-1 gap-6">
       <!-- Sizes List -->
