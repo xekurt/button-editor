@@ -18,4 +18,7 @@ export class SidebarComponent {
     { label: 'For Daniel', route: '/for-daniel', aria: 'for daniel' },
   ];
   constructor(public router: Router) {}
+  closeSidebar() {
+    this.open = false;
+  }
 }
