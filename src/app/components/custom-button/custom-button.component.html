@@ -4,7 +4,7 @@
     [attr.target]="target"
     [ngClass]="classes"
     [attr.aria-disabled]="state === 'disabled' || state === 'loading' ? 'true' : null"
-    (click)="$event.preventDefault(); (state === 'disabled' || state === 'loading' ? null : null)"
+    (click)="(state === 'disabled' || state === 'loading') ? $event.preventDefault() : null"
   >
     <ng-container *ngIf="startIcon">
       <span class="mr-2"><i [ngClass]="startIcon"></i></span>
@@ -27,7 +27,7 @@
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
       </svg>
     </ng-container>
-    <span><ng-content></ng-content></span>
+    <ng-content select="[slot=content]"></ng-content>
     <ng-container *ngIf="endIcon">
       <span class="ml-2"><i [ngClass]="endIcon"></i></span>
     </ng-container>

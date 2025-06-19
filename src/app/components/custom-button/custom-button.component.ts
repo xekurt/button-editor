@@ -16,6 +16,7 @@ export class CustomButtonComponent {
   @Input() href?: string;
   @Input() type: 'button' | 'submit' = 'button';
   @Input() target?: string;
+  @Input() class = '';
 
   get classes() {
     const base =
@@ -33,6 +34,7 @@ export class CustomButtonComponent {
     };
     const disabled =
       this.state === 'disabled' || this.state === 'loading' ? 'opacity-50 pointer-events-none' : '';
-    return [base, variants[this.variant], sizes[this.size], disabled].join(' ');
+    // User-provided class should have highest priority
+    return [base, variants[this.variant], sizes[this.size], disabled, this.class].join(' ');
   }
 }
