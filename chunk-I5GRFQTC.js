@@ -1,0 +1,1 @@
+import{Ca as o,Pa as n,Qa as i,cb as a}from"./chunk-HQMOKM2K.js";var p=(()=>{class e{static{this.\u0275fac=function(t){return new(t||e)}}static{this.\u0275cmp=o({type:e,selectors:[["app-documentation-module"]],decls:2,vars:0,template:function(t,c){t&1&&(n(0,"p"),a(1,"documentation-module works!"),i())},encapsulation:2})}}return e})();export{p as DocumentationModule};
