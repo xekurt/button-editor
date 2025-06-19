@@ -4,7 +4,7 @@
     [attr.target]="target"
     [ngClass]="classes"
     [attr.aria-disabled]="state === 'disabled' || state === 'loading' ? 'true' : null"
-    (click)="(state === 'disabled' || state === 'loading') ? $event.preventDefault() : null"
+    (click)="state === 'disabled' || state === 'loading' ? $event.preventDefault() : null"
   >
     <ng-container *ngIf="startIcon">
       <span class="mr-2"><i [ngClass]="startIcon"></i></span>
