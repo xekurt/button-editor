@@ -1,0 +1,45 @@
+<ng-container *ngIf="href; else buttonTemplate">
+  <a
+    [href]="href"
+    [attr.target]="target"
+    [ngClass]="classes"
+    [attr.aria-disabled]="state === 'disabled' || state === 'loading' ? 'true' : null"
+    (click)="$event.preventDefault(); state === 'disabled' || state === 'loading' ? null : null"
+  >
+    <ng-container *ngIf="startIcon">
+      <span class="mr-2"><i [ngClass]="startIcon"></i></span>
+    </ng-container>
+    <ng-container *ngIf="state === 'loading'">
+      <svg class="animate-spin h-5 w-5 mr-2 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+      </svg>
+    </ng-container>
+    <span><ng-content></ng-content></span>
+    <ng-container *ngIf="endIcon">
+      <span class="ml-2"><i [ngClass]="endIcon"></i></span>
+    </ng-container>
+  </a>
+</ng-container>
+<ng-template #buttonTemplate>
+  <button
+    [type]="type"
+    [ngClass]="classes"
+    [disabled]="state === 'disabled' || state === 'loading'"
+    
+  >
+    <ng-container *ngIf="startIcon">
+      <span class="mr-2"><i [ngClass]="startIcon"></i></span>
+    </ng-container>
+    <ng-container *ngIf="state === 'loading'">
+      <svg class="animate-spin h-5 w-5 mr-2 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+      </svg>
+    </ng-container>
+    <ng-content></ng-content>
+    <ng-container *ngIf="endIcon">
+      <span class="ml-2"><i [ngClass]="endIcon"></i></span>
+    </ng-container>
+  </button>
+</ng-template>
