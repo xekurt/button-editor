@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
   <ng-container *ngFor="let variant of variants; let i = index">
-    <dropdown>
+    <dropdown [title]="variant">
       <button-card [variant]="variant" />
     </dropdown>
   </ng-container>
