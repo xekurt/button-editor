@@ -1,13 +1,13 @@
 <div class="inline-flex rounded-md shadow-sm" role="group" [attr.aria-label]="ariaLabel">
-  <button
+  <app-custom-button
     *ngFor="let option of options; let i = index; trackBy: trackByValue"
     type="button"
+    variant="tertiary"
     [class]="getButtonClasses(option, i)"
-    [disabled]="option.disabled || disabled"
     [attr.aria-pressed]="value === option.value"
     (click)="selectOption(option.value)"
     (focus)="onTouched()"
   >
     {{ option.label }}
-  </button>
+  </app-custom-button>
 </div>

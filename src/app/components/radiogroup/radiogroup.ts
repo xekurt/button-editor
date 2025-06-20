@@ -2,6 +2,7 @@
 import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CustomButtonComponent } from '@components/custom-button/custom-button';
 
 export interface RadioOption {
   value: string;
@@ -12,7 +13,7 @@ export interface RadioOption {
 @Component({
   selector: 'app-radio-group',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CustomButtonComponent],
   templateUrl: './radiogroup.html',
   providers: [
     {
@@ -103,9 +104,9 @@ export class RadioGroupComponent implements ControlValueAccessor {
 
     if (this.variant === 'outlined') {
       if (isSelected) {
-        stateClasses = ['bg-blue-50', 'border-blue-500', 'text-primary', 'z-10'];
+        stateClasses = ['!bg-primary', 'text-white', 'z-10'];
       } else {
-        stateClasses = ['bg-white', 'border-gray-300', 'text-gray-700', 'hover:bg-gray-50'];
+        stateClasses = ['border-gray-300', 'text-gray-700', 'hover:bg-gray-50'];
       }
       baseClasses.push('border');
     } else {
