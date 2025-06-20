@@ -1,1 +1,0 @@
-import{Ea as o,Ra as n,Sa as i,db as r}from"./chunk-HU7BJAPX.js";var p=(()=>{class e{static{this.\u0275fac=function(t){return new(t||e)}}static{this.\u0275cmp=o({type:e,selectors:[["app-for-daniel-module"]],decls:2,vars:0,template:function(t,l){t&1&&(n(0,"p"),r(1,"for-daniel-module works!"),i())},encapsulation:2})}}return e})();export{p as ForDanielModule};
