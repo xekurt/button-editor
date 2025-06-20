@@ -20,11 +20,11 @@ export class CustomButtonComponent {
 
   get classes() {
     const base =
-      'inline-flex items-center justify-center font-medium rounded transition-colors duration-150 cursor-pointer';
+      'inline-flex items-center justify-center font-medium rounded transition-colors duration-150 cursor-pointer dark:text-neutral-50';
     const variants: Record<string, string> = {
       primary: 'bg-primary text-neutral-50 hover:bg-primary-dark',
       secondary:
-        'bg-transparent border-2 text-primary hover:bg-primary-light hover:text-neutral-50',
+        'bg-transparent border-2 border-primary text-primary hover:bg-primary-light hover:text-neutral-50',
       tertiary: 'bg-transparent text-primary hover:bg-primary-light hover:text-neutral-50',
     };
     const sizes: Record<string, string> = {
@@ -32,9 +32,11 @@ export class CustomButtonComponent {
       medium: 'px-md py-sm text-base',
       large: 'px-lg py-md text-lg',
     };
-    const disabled =
-      this.state === 'disabled' || this.state === 'loading' ? 'opacity-50 pointer-events-none' : '';
+    const disabled = this.isInActive ? 'opacity-50 pointer-events-none' : '';
     // User-provided class should have highest priority
     return [base, variants[this.variant], sizes[this.size], disabled, this.class].join(' ');
+  }
+  get isInActive() {
+    return this.state === 'disabled' || this.state === 'loading';
   }
 }
