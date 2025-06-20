@@ -21,11 +21,6 @@ export class SidebarComponent {
       route: '/documentation',
       aria: 'Documentation',
     },
-    {
-      label: 'For Daniel',
-      route: '/for-daniel',
-      aria: 'for daniel',
-    },
   ];
   constructor(public router: Router) {}
   closeSidebar() {

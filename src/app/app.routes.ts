@@ -17,11 +17,6 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'for-daniel',
-        loadComponent: () =>
-          import('@modules/for-daniel-module/for-daniel-module').then((m) => m.ForDanielModule),
-      },
-      {
         path: '',
         redirectTo: 'playground',
         pathMatch: 'full',
