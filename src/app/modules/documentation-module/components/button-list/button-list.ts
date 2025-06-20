@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ButtonCardComponent } from '@components/button-card/button-card';
 import { DropdownComponent } from '@components/dropdown/dropdown';
 
@@ -9,5 +9,9 @@ import { DropdownComponent } from '@components/dropdown/dropdown';
   templateUrl: './button-list.html',
 })
 export class ButtonListComponent {
-  variants: Array<'primary' | 'secondary' | 'tertiary'> = ['primary', 'secondary', 'tertiary'];
+  variants = input<Array<'primary' | 'secondary' | 'tertiary'>>([
+    'primary',
+    'secondary',
+    'tertiary',
+  ]);
 }
