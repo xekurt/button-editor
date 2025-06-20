@@ -31,7 +31,7 @@
       <li *ngFor="let link of sidebarLinks">
         <a
           [routerLink]="link.route"
-          routerLinkActive="active"
+          routerLinkActive="bg-primary text-white dark:bg-primary-dark dark:text-white"
           [routerLinkActiveOptions]="{
             exact: true,
           }"
