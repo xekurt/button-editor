@@ -3,8 +3,8 @@
     [href]="href"
     [attr.target]="target"
     [ngClass]="classes"
-    [attr.aria-disabled]="state === 'disabled' || state === 'loading' ? 'true' : null"
-    (click)="state === 'disabled' || state === 'loading' ? $event.preventDefault() : null"
+    [attr.aria-disabled]="isInActive ? 'true' : null"
+    (click)="isInActive ? $event.preventDefault() : null"
   >
     <ng-container *ngIf="startIcon">
       <span class="mr-2"><i [ngClass]="startIcon"></i></span>
@@ -34,11 +34,7 @@
   </a>
 </ng-container>
 <ng-template #buttonTemplate>
-  <button
-    [type]="type"
-    [ngClass]="classes"
-    [disabled]="state === 'disabled' || state === 'loading'"
-  >
+  <button [type]="type" [ngClass]="classes" [disabled]="isInActive">
     <ng-container *ngIf="startIcon">
       <span class="mr-2"><i [ngClass]="startIcon"></i></span>
     </ng-container>
