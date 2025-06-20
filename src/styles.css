@@ -126,6 +126,14 @@
   code {
     @apply text-text-light dark:text-text-dark;
   }
+  pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
 }
 
 /* Content scanning (optional, if needed for custom setup) */
