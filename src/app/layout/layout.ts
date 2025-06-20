@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header';
 import { SidebarComponent } from './components/sidebar/sidebar';
@@ -12,8 +12,11 @@ import { RouterOutlet } from '@angular/router';
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class DashboardLayout {
-  sidebarOpen = false;
+  sidebarOpen = signal<boolean>(false);
   toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen;
+    this.sidebarOpen.update((currentState) => !currentState);
+  }
+  closeSidebar() {
+    this.sidebarOpen.set(false);
   }
 }

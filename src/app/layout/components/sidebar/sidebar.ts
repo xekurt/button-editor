@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 
@@ -9,7 +9,8 @@ import { RouterModule, Router } from '@angular/router';
   templateUrl: './sidebar.html',
 })
 export class SidebarComponent {
-  @Input() open = false;
+  open = input<boolean>(false);
+  closeSidebar = output();
   sidebarLinks = [
     {
       label: 'Playground',
@@ -23,7 +24,7 @@ export class SidebarComponent {
     },
   ];
   constructor(public router: Router) {}
-  closeSidebar() {
-    this.open = false;
+  handleCloseButton() {
+    this.closeSidebar.emit();
   }
 }
