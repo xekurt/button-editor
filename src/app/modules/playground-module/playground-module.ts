@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { PlaygroundDescriptionComponent } from '@modules/playground-module/components/playground-description/playground-description';
 
 @Component({
-  selector: 'app-playground-module',
-  standalone: true,
-  imports: [CommonModule],
+  selector: 'playground-module',
+  imports: [CommonModule, PlaygroundDescriptionComponent],
   templateUrl: './playground-module.html',
 })
 export class PlaygroundModule {}
