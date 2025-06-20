@@ -72,7 +72,6 @@ export class RadioGroupComponent implements ControlValueAccessor {
       'font-medium',
       'transition-all',
       'duration-150',
-      'focus:outline-none',
       'focus:z-10',
       'cursor-pointer',
     ];
@@ -118,24 +117,14 @@ export class RadioGroupComponent implements ControlValueAccessor {
       }
     }
 
-    // Focus classes
-    const focusClasses =
-      this.variant === 'outlined'
-        ? ['focus:ring-2', 'focus:ring-blue-500', 'focus:border-blue-500']
-        : ['focus:ring-2', 'focus:ring-blue-500', 'focus:ring-offset-2'];
-
     // Disabled classes
     if (isDisabled) {
       stateClasses = ['bg-gray-100', 'text-gray-400', 'cursor-not-allowed', 'border-gray-300'];
     }
 
-    return [
-      ...baseClasses,
-      ...sizeClasses[this.size],
-      ...positionClasses,
-      ...stateClasses,
-      ...(isDisabled ? [] : focusClasses),
-    ].join(' ');
+    return [...baseClasses, ...sizeClasses[this.size], ...positionClasses, ...stateClasses].join(
+      ' ',
+    );
   }
 
   trackByValue(index: number, option: RadioOption): string {
