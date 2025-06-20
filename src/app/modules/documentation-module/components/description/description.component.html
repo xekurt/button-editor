@@ -1,14 +1,14 @@
-<section class="custom-button-doc mx-auto px-4 py-6">
-  <h2 class="mb-4 text-2xl font-semibold">Custom Button Component</h2>
-  <p class="mb-4">
+<section>
+  <h2 class="mb-4 text-xl font-semibold sm:text-2xl">Custom Button Component</h2>
+  <p class="mb-4 text-sm sm:text-base">
     <code>&lt;app-custom-button&gt;</code> is a flexible, responsive, and theme-aware button
     component supporting multiple variants, sizes, icons, loading/disabled states, and both button
     and anchor modes. It is fully compatible with dark mode and adapts to different screen sizes.
   </p>
 
-  <h3 class="mt-6 mb-2 text-xl font-medium">Usage</h3>
+  <h3 class="mt-6 mb-2 text-lg font-medium sm:text-xl">Usage</h3>
   <pre
-    class="mb-4 overflow-x-auto rounded bg-neutral-100 p-4 text-sm dark:bg-neutral-800"
+    class="mb-4 max-w-screen overflow-x-auto rounded bg-neutral-100 p-2 text-xs sm:p-4 sm:text-sm dark:bg-neutral-800"
   ><code>&lt;app-custom-button variant="primary" size="medium"&gt;
   Primary Button
 &lt;/app-custom-button&gt;
@@ -22,76 +22,80 @@
 &lt;/app-custom-button&gt;
 </code></pre>
 
-  <h3 class="mt-6 mb-2 text-xl font-medium">Inputs</h3>
+  <h3 class="mt-6 mb-2 text-lg font-medium sm:text-xl">Inputs</h3>
   <div class="overflow-x-auto">
-    <table class="mb-4 min-w-full border border-neutral-200 text-left dark:border-neutral-700">
+    <table
+      class="mb-4 max-w-screen overflow-x-auto border border-neutral-200 text-left text-xs sm:min-w-full sm:text-base dark:border-neutral-700"
+    >
       <thead class="bg-neutral-100 dark:bg-neutral-800">
         <tr>
-          <th class="px-3 py-2 font-semibold">Input</th>
-          <th class="px-3 py-2 font-semibold">Type</th>
-          <th class="px-3 py-2 font-semibold">Description</th>
+          <th class="px-2 py-2 font-semibold sm:px-3">Input</th>
+          <th class="px-2 py-2 font-semibold sm:px-3">Type</th>
+          <th class="px-2 py-2 font-semibold sm:px-3">Description</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="px-3 py-1">variant</td>
-          <td class="px-3 py-1">"primary" | "secondary" | "tertiary"</td>
-          <td class="px-3 py-1">Button style variant</td>
+          <td class="px-2 py-1 sm:px-3">variant</td>
+          <td class="px-2 py-1 sm:px-3">"primary" | "secondary" | "tertiary"</td>
+          <td class="px-2 py-1 sm:px-3">Button style variant</td>
         </tr>
         <tr>
-          <td class="px-3 py-1">state</td>
-          <td class="px-3 py-1">"default" | "disabled" | "loading"</td>
-          <td class="px-3 py-1">Button state</td>
+          <td class="px-2 py-1 sm:px-3">state</td>
+          <td class="px-2 py-1 sm:px-3">"default" | "disabled" | "loading"</td>
+          <td class="px-2 py-1 sm:px-3">Button state</td>
         </tr>
         <tr>
-          <td class="px-3 py-1">size</td>
-          <td class="px-3 py-1">"small" | "medium" | "large"</td>
-          <td class="px-3 py-1">Button size</td>
+          <td class="px-2 py-1 sm:px-3">size</td>
+          <td class="px-2 py-1 sm:px-3">"small" | "medium" | "large"</td>
+          <td class="px-2 py-1 sm:px-3">Button size</td>
         </tr>
         <tr>
-          <td class="px-3 py-1">startIcon</td>
-          <td class="px-3 py-1">string</td>
-          <td class="px-3 py-1">Optional icon class (left)</td>
+          <td class="px-2 py-1 sm:px-3">startIcon</td>
+          <td class="px-2 py-1 sm:px-3">string</td>
+          <td class="px-2 py-1 sm:px-3">Optional icon class (left)</td>
         </tr>
         <tr>
-          <td class="px-3 py-1">endIcon</td>
-          <td class="px-3 py-1">string</td>
-          <td class="px-3 py-1">Optional icon class (right)</td>
+          <td class="px-2 py-1 sm:px-3">endIcon</td>
+          <td class="px-2 py-1 sm:px-3">string</td>
+          <td class="px-2 py-1 sm:px-3">Optional icon class (right)</td>
         </tr>
         <tr>
-          <td class="px-3 py-1">href</td>
-          <td class="px-3 py-1">string</td>
-          <td class="px-3 py-1">If set, renders as &lt;a&gt; link</td>
+          <td class="px-2 py-1 sm:px-3">href</td>
+          <td class="px-2 py-1 sm:px-3">string</td>
+          <td class="px-2 py-1 sm:px-3">If set, renders as &lt;a&gt; link</td>
         </tr>
         <tr>
-          <td class="px-3 py-1">type</td>
-          <td class="px-3 py-1">"button" | "submit"</td>
-          <td class="px-3 py-1">Button type (if not link)</td>
+          <td class="px-2 py-1 sm:px-3">type</td>
+          <td class="px-2 py-1 sm:px-3">"button" | "submit"</td>
+          <td class="px-2 py-1 sm:px-3">Button type (if not link)</td>
         </tr>
         <tr>
-          <td class="px-3 py-1">target</td>
-          <td class="px-3 py-1">string</td>
-          <td class="px-3 py-1">Target for link (if href)</td>
+          <td class="px-2 py-1 sm:px-3">target</td>
+          <td class="px-2 py-1 sm:px-3">string</td>
+          <td class="px-2 py-1 sm:px-3">Target for link (if href)</td>
         </tr>
         <tr>
-          <td class="px-3 py-1">class</td>
-          <td class="px-3 py-1">string</td>
-          <td class="px-3 py-1">Extra CSS classes</td>
+          <td class="px-2 py-1 sm:px-3">class</td>
+          <td class="px-2 py-1 sm:px-3">string</td>
+          <td class="px-2 py-1 sm:px-3">Extra CSS classes</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <h3 class="mt-6 mb-2 text-xl font-medium">Features</h3>
-  <ul class="mb-4 list-disc pl-6">
+  <h3 class="mt-6 mb-2 text-lg font-medium sm:text-xl">Features</h3>
+  <ul class="mb-4 list-disc pl-4 text-xs sm:pl-6 sm:text-base">
     <li>Responsive: Adapts to all screen sizes using utility classes.</li>
     <li>Dark mode: Fully theme-aware, automatically switches styles in dark mode.</li>
     <li>Accessible: Supports <code>aria-disabled</code> and proper button/link semantics.</li>
     <li>Flexible: Use as a button or link, with optional icons and loading state.</li>
   </ul>
 
-  <h3 class="mt-6 mb-2 text-xl font-medium">Dark Mode Example</h3>
-  <div class="flex flex-wrap gap-4 rounded bg-neutral-100 p-4 dark:bg-neutral-800">
+  <h3 class="mt-6 mb-2 text-lg font-medium sm:text-xl">Dark Mode Example</h3>
+  <div
+    class="flex flex-col flex-wrap gap-2 rounded bg-neutral-100 p-2 sm:flex-row sm:gap-4 sm:p-4 dark:bg-neutral-800"
+  >
     <app-custom-button variant="primary">Primary</app-custom-button>
     <app-custom-button variant="secondary">Secondary</app-custom-button>
     <app-custom-button variant="tertiary">Tertiary</app-custom-button>
