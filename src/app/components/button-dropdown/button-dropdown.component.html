@@ -26,6 +26,7 @@
       <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
     </svg>
   </button>
+  <!-- Dropdown content -->
   <div
     *ngIf="isOpen"
     class="w-full rounded-b-2xl bg-neutral-50 px-6 pt-2 pb-6 shadow-lg shadow-neutral-200 dark:bg-neutral-800 dark:shadow-neutral-900"
@@ -33,14 +34,14 @@
   >
     <div class="grid w-full grid-cols-1 gap-6">
       <!-- Sizes List -->
-      <ng-container *ngFor="let size of sizes; let k = index">
+      <ng-container *ngFor="let size of sizes">
         <div class="flex flex-col items-start">
           <!-- Show status label above button on mobile only -->
-          <span class="mb-2 block text-center text-base font-semibold md:hidden">{{
-            sizes[k]
+          <span class="mb-2 block text-center text-base font-semibold capitalize md:hidden">{{
+            size
           }}</span>
           <app-custom-button class="capitalize" [variant]="variant" [size]="size">
-            {{ variant }} - {{ size }}
+            {{ variant }}
           </app-custom-button>
         </div>
       </ng-container>
@@ -48,15 +49,11 @@
       <ng-container *ngFor="let state of states; let j = index">
         <div class="flex flex-col items-start">
           <!-- Show status label above button on mobile only -->
-          <span class="mb-2 block text-center text-base font-semibold md:hidden">{{
-            statuses[j]
+          <span class="mb-2 block text-center text-base font-semibold capitalize md:hidden">{{
+            state
           }}</span>
           <app-custom-button [variant]="variant" [state]="state">
-            {{ variant.charAt(0).toUpperCase() + variant.slice(1)
-            }}<ng-container>
-              -
-              {{ state.charAt(0).toUpperCase() + state.slice(1) }}</ng-container
-            >
+            {{ variant.charAt(0).toUpperCase() + variant.slice(1) }}
           </app-custom-button>
         </div>
       </ng-container>

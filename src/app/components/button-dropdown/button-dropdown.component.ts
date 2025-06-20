@@ -10,7 +10,6 @@ import { CustomButtonComponent } from '@components/custom-button/custom-button.c
 export class ButtonDropdownComponent {
   @Input() variant: 'primary' | 'secondary' | 'tertiary';
 
-  statuses = ['Active', 'Inactive', 'Pending'];
   states: Array<'disabled' | 'loading'> = ['disabled', 'loading'];
   sizes: Array<'small' | 'medium' | 'large'> = ['small', 'medium', 'large'];
 
