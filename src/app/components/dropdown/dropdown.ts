@@ -34,7 +34,7 @@ import { Component, Input } from '@angular/core';
 })
 export class DropdownComponent {
   @Input() title: string;
-  isOpen: boolean = false;
+  isOpen: boolean = true;
   animating: boolean = false;
 
   toggle() {
