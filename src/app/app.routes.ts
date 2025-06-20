@@ -19,9 +19,7 @@ export const routes: Routes = [
       {
         path: 'for-daniel',
         loadComponent: () =>
-          import('@modules/for-daniel-module/for-daniel-module.component').then(
-            (m) => m.ForDanielModule,
-          ),
+          import('@modules/for-daniel-module/for-daniel-module').then((m) => m.ForDanielModule),
       },
       {
         path: '',
