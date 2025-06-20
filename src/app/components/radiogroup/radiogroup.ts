@@ -1,5 +1,5 @@
 // radio-group.component.ts
-import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
+import { Component, EventEmitter, forwardRef, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CustomButtonComponent } from '@components/custom-button/custom-button';
@@ -24,15 +24,15 @@ export interface RadioOption {
   ],
 })
 export class RadioGroupComponent implements ControlValueAccessor {
-  @Input() options: RadioOption[] = [];
-  @Input() disabled: boolean = false;
-  @Input() ariaLabel: string = '';
-  @Input() size: 'small' | 'medium' | 'large' = 'medium';
-  @Input() variant: 'contained' | 'outlined' = 'outlined';
+  options = input<RadioOption[]>([]);
 
-  @Output() selectionChange = new EventEmitter<string>();
+  ariaLabel = input<string>('');
+  size = input<'small' | 'medium' | 'large'>('medium');
+  variant = input<'contained' | 'outlined'>('outlined');
 
-  value: string = '';
+  selectionChange = new EventEmitter<string>();
+
+  value = signal<string>('');
 
   // ControlValueAccessor implementation
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -40,7 +40,7 @@ export class RadioGroupComponent implements ControlValueAccessor {
   onTouched = () => {};
 
   writeValue(value: string): void {
-    this.value = value;
+    this.value.set(value);
   }
 
   registerOnChange(fn: (value: string) => void): void {
@@ -51,14 +51,8 @@ export class RadioGroupComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
-
   selectOption(optionValue: string): void {
-    if (this.disabled) return;
-
-    this.value = optionValue;
+    this.value.set(optionValue);
     this.onChange(optionValue);
     this.selectionChange.emit(optionValue);
   }
@@ -88,7 +82,7 @@ export class RadioGroupComponent implements ControlValueAccessor {
     if (index === 0) {
       positionClasses.push('rounded-l-md');
     }
-    if (index === this.options.length - 1) {
+    if (index === this.options().length - 1) {
       positionClasses.push('rounded-r-md');
     }
     if (index > 0) {
@@ -96,12 +90,12 @@ export class RadioGroupComponent implements ControlValueAccessor {
     }
 
     // State and variant classes
-    const isSelected = this.value === option.value;
-    const isDisabled = option.disabled || this.disabled;
+    const isSelected = this.value() === option.value;
+    const isDisabled = option.disabled;
 
     let stateClasses: string[] = [];
 
-    if (this.variant === 'outlined') {
+    if (this.variant() === 'outlined') {
       if (isSelected) {
         stateClasses = ['!bg-primary', 'text-white', 'z-10'];
       } else {
@@ -122,7 +116,7 @@ export class RadioGroupComponent implements ControlValueAccessor {
       stateClasses = ['bg-gray-100', 'text-gray-400', 'cursor-not-allowed', 'border-gray-300'];
     }
 
-    return [...baseClasses, ...sizeClasses[this.size], ...positionClasses, ...stateClasses].join(
+    return [...baseClasses, ...sizeClasses[this.size()], ...positionClasses, ...stateClasses].join(
       ' ',
     );
   }
