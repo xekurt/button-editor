@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CustomButtonComponent } from '@components/custom-button/custom-button.component';
+import { CustomButtonComponent } from '@components/custom-button/custom-button';
 
 @Component({
   selector: 'app-description',

@@ -12,7 +12,7 @@ export const routes: Routes = [
       {
         path: 'documentation',
         loadComponent: () =>
-          import('@modules/documentation-module/documentation-module.component').then(
+          import('@modules/documentation-module/documentation-module').then(
             (m) => m.DocumentationModule,
           ),
       },

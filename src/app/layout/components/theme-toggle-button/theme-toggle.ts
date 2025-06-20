@@ -4,7 +4,7 @@ import { ThemeService } from '@services/theme.service';
 
 @Component({
   selector: 'theme-toggle-button',
-  templateUrl: './theme-toggle.component.html',
+  templateUrl: './theme-toggle.html',
   imports: [CommonModule],
 })
 export class ThemeToggleButtonComponent {

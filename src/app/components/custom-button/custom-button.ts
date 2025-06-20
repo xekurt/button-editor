@@ -5,7 +5,7 @@ import { NgIf, NgClass } from '@angular/common';
   selector: 'app-custom-button',
   standalone: true,
   imports: [NgIf, NgClass],
-  templateUrl: './custom-button.component.html',
+  templateUrl: './custom-button.html',
 })
 export class CustomButtonComponent {
   @Input() variant: 'primary' | 'secondary' | 'tertiary' = 'primary';

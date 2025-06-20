@@ -7,8 +7,7 @@ import { RouterModule, Router } from '@angular/router';
   selector: 'app-sidebar',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css',
+  templateUrl: './sidebar.html',
 })
 export class SidebarComponent {
   @Input() open = false;
