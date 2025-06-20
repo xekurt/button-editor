@@ -10,7 +10,8 @@
         <h3 class="text-sm font-medium">Variant</h3>
         <app-radio-group
           [options]="variantOptions"
-          [(ngModel)]="variant"
+          [ngModel]="variant()"
+          (ngModelChange)="handleVariantChange($event)"
           ariaLabel="Button variant selection"
           size="medium"
           variant="outlined"
@@ -23,7 +24,8 @@
         <h3 class="text-sm font-medium">State</h3>
         <app-radio-group
           [options]="stateOptions"
-          [(ngModel)]="state"
+          [ngModel]="state()"
+          (ngModelChange)="handleStateChange($event)"
           ariaLabel="Button state selection"
           size="medium"
           variant="outlined"
@@ -36,7 +38,8 @@
         <h3 class="text-sm font-medium">Size</h3>
         <app-radio-group
           [options]="sizeOptions"
-          [(ngModel)]="size"
+          [ngModel]="size()"
+          (ngModelChange)="handleSizeChange($event)"
           ariaLabel="Button size selection"
           size="medium"
           variant="outlined"
@@ -53,9 +56,9 @@
     <!-- Your existing button component -->
     <div class="mb-8">
       <app-custom-button
-        [variant]="variant"
-        [state]="state"
-        [size]="size"
+        [variant]="variant()"
+        [state]="state()"
+        [size]="size()"
         (click)="onButtonClick()"
       >
         Click Me
@@ -68,15 +71,15 @@
       <div class="space-y-1 text-sm">
         <div class="flex justify-between">
           <span class="font-medium">Variant:</span>
-          <span class="ml-4 rounded px-2 py-1 text-xs">{{ variant }}</span>
+          <span class="ml-4 rounded px-2 py-1 text-xs">{{ variant() }}</span>
         </div>
         <div class="flex justify-between">
           <span class="font-medium">State:</span>
-          <span class="ml-4 rounded px-2 py-1 text-xs">{{ state }}</span>
+          <span class="ml-4 rounded px-2 py-1 text-xs">{{ state() }}</span>
         </div>
         <div class="flex justify-between">
           <span class="font-medium">Size:</span>
-          <span class="ml-4 rounded px-2 py-1 text-xs">{{ size }}</span>
+          <span class="ml-4 rounded px-2 py-1 text-xs">{{ size() }}</span>
         </div>
       </div>
     </div>

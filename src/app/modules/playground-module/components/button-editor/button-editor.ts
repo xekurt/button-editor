@@ -1,13 +1,10 @@
 // button-configurator.component.ts
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RadioGroupComponent, RadioOption } from '@components/radiogroup/radiogroup';
 import { CustomButtonComponent } from '@components/custom-button/custom-button';
-
-type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
-type ButtonState = 'default' | 'disabled' | 'loading';
-type ButtonSize = 'small' | 'medium' | 'large';
+import { ButtonSize, ButtonState, ButtonVariant } from '@components/custom-button/types';
 
 @Component({
   selector: 'button-editor',
@@ -17,9 +14,9 @@ type ButtonSize = 'small' | 'medium' | 'large';
 })
 export class ButtonEditorComponent {
   // Button configuration properties
-  variant: ButtonVariant = 'primary';
-  state: ButtonState = 'default';
-  size: ButtonSize = 'medium';
+  variant = signal<ButtonVariant>('primary');
+  state = signal<ButtonState>('default');
+  size = signal<ButtonSize>('medium');
 
   // Available options for radio groups
   variantOptions: RadioOption[] = [
@@ -47,5 +44,14 @@ export class ButtonEditorComponent {
       state: this.state,
       size: this.size,
     });
+  }
+  handleVariantChange(newVariant: ButtonVariant) {
+    this.variant.update(() => newVariant);
+  }
+  handleStateChange(newVariant: ButtonState) {
+    this.state.update(() => newVariant);
+  }
+  handleSizeChange(newVariant: ButtonSize) {
+    this.size.update(() => newVariant);
   }
 }
