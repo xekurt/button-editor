@@ -3,18 +3,16 @@
   <button
     (click)="toggle()"
     class="flex w-full cursor-pointer items-center justify-between rounded-t-2xl bg-neutral-50 px-6 py-4 shadow-lg shadow-neutral-200 dark:bg-neutral-800 dark:shadow-neutral-900"
-    [attr.aria-expanded]="isOpen"
+    [attr.aria-expanded]="isOpen()"
     type="button"
   >
     <span
       class="0 inline-block rounded bg-transparent px-4 py-2 text-lg font-bold tracking-wide text-neutral-800 capitalize dark:text-neutral-100"
     >
-      {{ title }}
+      {{ title() }}
     </span>
     <svg
-      [ngClass]="{
-        'rotate-180': isOpen,
-      }"
+      [ngClass]="{ 'rotate-180': isOpen() }"
       class="ml-2 h-5 w-5 transition-transform duration-200"
       fill="none"
       stroke="currentColor"
@@ -27,8 +25,8 @@
   </button>
   <!-- Dropdown content -->
   <div
-    [@dropdownContent]="isOpen ? 'open' : 'closed'"
-    [attr.aria-hidden]="!isOpen"
+    [@dropdownContent]="isOpen() ? 'open' : 'closed'"
+    [attr.aria-hidden]="!isOpen()"
     class="w-full overflow-hidden rounded-b-2xl bg-neutral-50 px-6 pt-2 pb-6 shadow-lg shadow-neutral-200 transition-all duration-300 ease-in-out dark:bg-neutral-800 dark:shadow-neutral-900"
     role="region"
   >

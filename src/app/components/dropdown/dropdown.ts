@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 
 @Component({
   selector: 'dropdown',
@@ -33,11 +33,11 @@ import { Component, Input } from '@angular/core';
   ],
 })
 export class DropdownComponent {
-  @Input() title: string;
-  isOpen: boolean = true;
-  animating: boolean = false;
+  title = input<string>();
+  isOpen = signal<boolean>(true);
+  animating = signal<boolean>(false);
 
   toggle() {
-    this.isOpen = !this.isOpen;
+    this.isOpen.update((open) => !open);
   }
 }

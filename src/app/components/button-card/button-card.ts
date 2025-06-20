@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { CustomButtonComponent } from '@components/custom-button/custom-button';
 
 @Component({
@@ -8,7 +8,7 @@ import { CustomButtonComponent } from '@components/custom-button/custom-button';
   imports: [CustomButtonComponent, NgFor],
 })
 export class ButtonCardComponent {
-  @Input() variant: 'primary' | 'secondary' | 'tertiary';
-  states: Array<'disabled' | 'loading'> = ['disabled', 'loading'];
-  sizes: Array<'small' | 'medium' | 'large'> = ['small', 'medium', 'large'];
+  variant = input<'primary' | 'secondary' | 'tertiary'>();
+  states = signal<Array<'disabled' | 'loading'>>(['disabled', 'loading']);
+  sizes = signal<Array<'small' | 'medium' | 'large'>>(['small', 'medium', 'large']);
 }
