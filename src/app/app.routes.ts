@@ -7,9 +7,7 @@ export const routes: Routes = [
       {
         path: 'playground',
         loadComponent: () =>
-          import('@modules/playground-module/playground-module.component').then(
-            (m) => m.PlaygroundModule,
-          ),
+          import('@modules/playground-module/playground-module').then((m) => m.PlaygroundModule),
       },
       {
         path: 'documentation',

@@ -1,21 +1,14 @@
-import { CommonModule } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { CustomButtonComponent } from '@components/custom-button/custom-button.component';
 
 @Component({
-  selector: 'app-button-dropdown',
-  imports: [CommonModule, CustomButtonComponent],
-  templateUrl: './button-dropdown.component.html',
+  selector: 'button-card',
+  templateUrl: './button-card.html',
+  imports: [CustomButtonComponent, NgFor],
 })
-export class ButtonDropdownComponent {
+export class ButtonCardComponent {
   @Input() variant: 'primary' | 'secondary' | 'tertiary';
-
   states: Array<'disabled' | 'loading'> = ['disabled', 'loading'];
   sizes: Array<'small' | 'medium' | 'large'> = ['small', 'medium', 'large'];
-
-  isOpen: boolean = false;
-
-  toggle() {
-    this.isOpen = !this.isOpen;
-  }
 }

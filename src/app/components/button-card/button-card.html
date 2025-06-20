@@ -1,0 +1,32 @@
+<div class="grid w-full grid-cols-1 gap-6">
+  <!-- Sizes List -->
+  <ng-container *ngFor="let size of sizes">
+    <div class="pb-lg flex flex-col items-start border-b border-dotted border-neutral-50">
+      <!-- Show status label above button on mobile only -->
+      <span class="mb-2 block text-center text-base font-semibold capitalize">{{ size }}</span>
+      <app-custom-button class="capitalize" [variant]="variant" [size]="size">
+        {{ variant }}
+      </app-custom-button>
+    </div>
+  </ng-container>
+  <!-- States List -->
+  <ng-container *ngFor="let state of states; let j = index">
+    <div class="pb-lg flex flex-col items-start border-b border-dotted border-neutral-200">
+      <!-- Show status label above button on mobile only -->
+      <span class="mb-2 block text-center text-base font-semibold capitalize">{{ state }}</span>
+      <app-custom-button [variant]="variant" [state]="state" class="capitalize">
+        {{ variant }}
+      </app-custom-button>
+    </div>
+  </ng-container>
+  <!-- Link -->
+
+  <app-custom-button
+    variant="tertiary"
+    target="_blank"
+    class="hover:bg-transparent"
+    href="https://www.google.com"
+  >
+    <span slot="content" class="underline">As Link</span>
+  </app-custom-button>
+</div>

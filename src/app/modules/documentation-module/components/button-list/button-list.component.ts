@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ButtonDropdownComponent } from '@components/button-dropdown/button-dropdown.component';
+import { ButtonCardComponent } from '@components/button-card/button-card';
+import { DropdownComponent } from '@components/dropdown/dropdown';
 
 @Component({
   selector: 'app-button-list',
-  imports: [CommonModule, ButtonDropdownComponent],
+  imports: [CommonModule, DropdownComponent, ButtonCardComponent],
   templateUrl: './button-list.component.html',
 })
 export class ButtonListComponent {
