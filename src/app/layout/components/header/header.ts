@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ThemeToggleButtonComponent } from '../theme-toggle-button/theme-toggle';
@@ -10,5 +10,5 @@ import { ThemeToggleButtonComponent } from '../theme-toggle-button/theme-toggle'
   templateUrl: './header.html',
 })
 export class HeaderComponent {
-  @Output() toggleSidebar = new EventEmitter<void>();
+  toggleSidebar = output<void>();
 }
