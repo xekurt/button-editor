@@ -1,4 +1,3 @@
-// src/app/components/sidebar/sidebar.component.ts
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';

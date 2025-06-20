@@ -6,7 +6,7 @@ import { DropdownComponent } from '@components/dropdown/dropdown';
 @Component({
   selector: 'app-button-list',
   imports: [CommonModule, DropdownComponent, ButtonCardComponent],
-  templateUrl: './button-list.component.html',
+  templateUrl: './button-list.html',
 })
 export class ButtonListComponent {
   variants: Array<'primary' | 'secondary' | 'tertiary'> = ['primary', 'secondary', 'tertiary'];
