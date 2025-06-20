@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { NgIf, NgClass } from '@angular/common';
 
 @Component({
@@ -8,15 +8,15 @@ import { NgIf, NgClass } from '@angular/common';
   templateUrl: './custom-button.html',
 })
 export class CustomButtonComponent {
-  @Input() variant: 'primary' | 'secondary' | 'tertiary' = 'primary';
-  @Input() state: 'default' | 'disabled' | 'loading' = 'default';
-  @Input() size: 'small' | 'medium' | 'large' = 'medium';
-  @Input() startIcon?: string;
-  @Input() endIcon?: string;
-  @Input() href?: string;
-  @Input() type: 'button' | 'submit' = 'button';
-  @Input() target?: string;
-  @Input() class = '';
+  variant = input<'primary' | 'secondary' | 'tertiary'>('primary');
+  state = input<'default' | 'disabled' | 'loading'>('default');
+  size = input<'small' | 'medium' | 'large'>('medium');
+  startIcon = input<string | undefined>();
+  endIcon = input<string | undefined>();
+  href = input<string | undefined>();
+  type = input<'button' | 'submit'>('button');
+  target = input<string | undefined>();
+  class = input<string>('');
 
   get classes() {
     const base =
@@ -34,9 +34,9 @@ export class CustomButtonComponent {
     };
     const disabled = this.isInActive ? 'opacity-50 pointer-events-none' : '';
     // User-provided class should have highest priority
-    return [base, variants[this.variant], sizes[this.size], disabled, this.class].join(' ');
+    return [base, variants[this.variant()], sizes[this.size()], disabled, this.class()].join(' ');
   }
   get isInActive() {
-    return this.state === 'disabled' || this.state === 'loading';
+    return this.state() === 'disabled' || this.state() === 'loading';
   }
 }

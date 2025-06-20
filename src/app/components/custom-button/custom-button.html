@@ -1,15 +1,15 @@
-<ng-container *ngIf="href; else buttonTemplate">
+<ng-container *ngIf="href(); else buttonTemplate">
   <a
-    [href]="href"
-    [attr.target]="target"
+    [href]="href()"
+    [attr.target]="target()"
     [ngClass]="classes"
     [attr.aria-disabled]="isInActive ? 'true' : null"
     (click)="isInActive ? $event.preventDefault() : null"
   >
-    <ng-container *ngIf="startIcon">
-      <span class="mr-2"><i [ngClass]="startIcon"></i></span>
+    <ng-container *ngIf="startIcon()">
+      <span class="mr-2"><i [ngClass]="startIcon()"></i></span>
     </ng-container>
-    <ng-container *ngIf="state === 'loading'">
+    <ng-container *ngIf="state() === 'loading'">
       <svg
         class="mr-2 h-5 w-5 animate-spin text-current"
         xmlns="http://www.w3.org/2000/svg"
@@ -28,17 +28,17 @@
       </svg>
     </ng-container>
     <ng-content select="[slot=content]"></ng-content>
-    <ng-container *ngIf="endIcon">
-      <span class="ml-2"><i [ngClass]="endIcon"></i></span>
+    <ng-container *ngIf="endIcon()">
+      <span class="ml-2"><i [ngClass]="endIcon()"></i></span>
     </ng-container>
   </a>
 </ng-container>
 <ng-template #buttonTemplate>
-  <button [type]="type" [ngClass]="classes" [disabled]="isInActive">
-    <ng-container *ngIf="startIcon">
-      <span class="mr-2"><i [ngClass]="startIcon"></i></span>
+  <button [type]="type()" [ngClass]="classes" [disabled]="isInActive">
+    <ng-container *ngIf="startIcon()">
+      <span class="mr-2"><i [ngClass]="startIcon()"></i></span>
     </ng-container>
-    <ng-container *ngIf="state === 'loading'">
+    <ng-container *ngIf="state() === 'loading'">
       <svg
         class="mr-2 h-5 w-5 animate-spin text-current"
         xmlns="http://www.w3.org/2000/svg"
@@ -57,8 +57,8 @@
       </svg>
     </ng-container>
     <ng-content></ng-content>
-    <ng-container *ngIf="endIcon">
-      <span class="ml-2"><i [ngClass]="endIcon"></i></span>
+    <ng-container *ngIf="endIcon()">
+      <span class="ml-2"><i [ngClass]="endIcon()"></i></span>
     </ng-container>
   </button>
 </ng-template>
