@@ -1,0 +1,84 @@
+<!-- button-configurator.component.html -->
+<div class="mx-auto md:p-6">
+  <!-- Configuration Panel -->
+  <div class="dark:border-primary-light mb-8 rounded-lg border border-gray-200 p-6">
+    <h2 class="mb-6 text-xl font-semibold">Configuration Options</h2>
+
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <!-- Variant Radio Group -->
+      <div class="flex flex-col items-center space-y-4">
+        <h3 class="text-sm font-medium">Variant</h3>
+        <app-radio-group
+          [options]="variantOptions"
+          [(ngModel)]="variant"
+          ariaLabel="Button variant selection"
+          size="medium"
+          variant="outlined"
+        >
+        </app-radio-group>
+      </div>
+
+      <!-- State Radio Group -->
+      <div class="flex flex-col items-center space-y-4">
+        <h3 class="text-sm font-medium">State</h3>
+        <app-radio-group
+          [options]="stateOptions"
+          [(ngModel)]="state"
+          ariaLabel="Button state selection"
+          size="medium"
+          variant="outlined"
+        >
+        </app-radio-group>
+      </div>
+
+      <!-- Size Radio Group -->
+      <div class="flex flex-col items-center space-y-4">
+        <h3 class="text-sm font-medium">Size</h3>
+        <app-radio-group
+          [options]="sizeOptions"
+          [(ngModel)]="size"
+          ariaLabel="Button size selection"
+          size="medium"
+          variant="outlined"
+        >
+        </app-radio-group>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button Preview -->
+  <div class="rounded-lg border border-gray-200 p-8 text-center">
+    <h2 class="mb-8 text-xl font-semibold">Button Preview</h2>
+
+    <!-- Your existing button component -->
+    <div class="mb-8">
+      <app-custom-button
+        [variant]="variant"
+        [state]="state"
+        [size]="size"
+        (click)="onButtonClick()"
+      >
+        Click Me
+      </app-custom-button>
+    </div>
+
+    <!-- Current configuration display -->
+    <div class="inline-block rounded-lg p-4 text-left">
+      <p class="mb-3 font-semibold">Current Configuration:</p>
+      <div class="space-y-1 text-sm">
+        <div class="flex justify-between">
+          <span class="font-medium">Variant:</span>
+          <span class="ml-4 rounded px-2 py-1 text-xs">{{ variant }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-medium">State:</span>
+          <span class="ml-4 rounded px-2 py-1 text-xs">{{ state }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-medium">Size:</span>
+          <span class="ml-4 rounded px-2 py-1 text-xs">{{ size }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
