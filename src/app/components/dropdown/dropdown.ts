@@ -6,7 +6,6 @@ import { Component, Input } from '@angular/core';
   selector: 'dropdown',
   imports: [CommonModule],
   templateUrl: './dropdown.html',
-  styleUrls: ['./dropdown.css'],
   animations: [
     trigger('dropdownContent', [
       state(
@@ -29,14 +28,14 @@ import { Component, Input } from '@angular/core';
           paddingBottom: '*',
         }),
       ),
-      transition('closed <=> open', [animate('300ms cubic-bezier(0.4,0,0.2,1)')]),
+      transition('closed <=> open', animate('300ms cubic-bezier(0.4,0,0.2,1)')),
     ]),
   ],
 })
 export class DropdownComponent {
   @Input() title: string;
   isOpen: boolean = false;
-  animating: boolean = false; // Add animating flag for animation lifecycle
+  animating: boolean = false;
 
   toggle() {
     this.isOpen = !this.isOpen;

@@ -27,8 +27,8 @@
   </button>
   <!-- Dropdown content -->
   <div
-    *ngIf="isOpen"
     [@dropdownContent]="isOpen ? 'open' : 'closed'"
+    [attr.aria-hidden]="!isOpen"
     class="w-full overflow-hidden rounded-b-2xl bg-neutral-50 px-6 pt-2 pb-6 shadow-lg shadow-neutral-200 transition-all duration-300 ease-in-out dark:bg-neutral-800 dark:shadow-neutral-900"
     role="region"
   >
