@@ -9,6 +9,7 @@ This project is an Angular application designed as part of an interview task. It
 - Example playground and documentation modules
 - Custom layout with header and sidebar
 - Fully responsive design for all devices
+- Fully accessible (ARIA, keyboard navigation, screen reader support)
 - Deployed to GitHub Pages: [https://xekurt.github.io/button-editor](https://xekurt.github.io/button-editor)
 
 ## Project Structure
