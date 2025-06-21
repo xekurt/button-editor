@@ -31,6 +31,7 @@ This project is an Angular application designed as part of an interview task. It
 └── ...
 ```
 - **components/**: Shared UI components (button, dropdown, color input, etc.)
+  - `components/custom-button/`: Custom button component and its types
 - **layout/**: Application layout components (header, sidebar, theme toggle)
 - **modules/**: Feature modules (documentation, playground)
 - **services/**: Application-wide services (e.g., theme management)
