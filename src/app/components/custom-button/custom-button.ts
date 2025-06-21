@@ -1,10 +1,10 @@
 import { Component, input } from '@angular/core';
-import { NgIf, NgClass } from '@angular/common';
+import { NgIf, NgClass, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-custom-button',
   standalone: true,
-  imports: [NgIf, NgClass],
+  imports: [NgIf, NgClass, NgStyle],
   templateUrl: './custom-button.html',
 })
 export class CustomButtonComponent {
@@ -17,6 +17,8 @@ export class CustomButtonComponent {
   type = input<'button' | 'submit'>('button');
   target = input<string | undefined>();
   class = input<string>('');
+  color = input<string | undefined>();
+  backgroundColor = input<string | undefined>();
 
   get classes() {
     const base =
@@ -38,5 +40,26 @@ export class CustomButtonComponent {
   }
   get isInActive() {
     return this.state() === 'disabled' || this.state() === 'loading';
+  }
+  get styles() {
+    // Allow user to override color and background color via hex code
+    const styles: Record<string, string> = {};
+    if (this.variant() === 'secondary') {
+      if (this.color()) {
+        styles['color'] = this.color()!;
+        styles['borderColor'] = this.color()!;
+      }
+      if (this.backgroundColor()) {
+        styles['backgroundColor'] = this.backgroundColor()!;
+      }
+    } else {
+      if (this.color()) {
+        styles['color'] = this.color()!;
+      }
+      if (this.backgroundColor()) {
+        styles['backgroundColor'] = this.backgroundColor()!;
+      }
+    }
+    return styles;
   }
 }

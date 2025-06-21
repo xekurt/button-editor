@@ -5,11 +5,18 @@ import { FormsModule } from '@angular/forms';
 import { RadioGroupComponent, RadioOption } from '@components/radiogroup/radiogroup';
 import { CustomButtonComponent } from '@components/custom-button/custom-button';
 import { ButtonSize, ButtonState, ButtonVariant } from '@components/custom-button/types';
+import { ColorInputComponent } from '../../../../components/color-input/color-input';
 
 @Component({
   selector: 'button-editor',
   standalone: true,
-  imports: [CommonModule, FormsModule, RadioGroupComponent, CustomButtonComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RadioGroupComponent,
+    CustomButtonComponent,
+    ColorInputComponent,
+  ],
   templateUrl: './button-editor.html',
 })
 export class ButtonEditorComponent {
@@ -17,6 +24,8 @@ export class ButtonEditorComponent {
   variant = signal<ButtonVariant>('primary');
   state = signal<ButtonState>('default');
   size = signal<ButtonSize>('medium');
+  color = signal<string | undefined>(undefined);
+  backgroundColor = signal<string | undefined>('#4338CA');
 
   // Available options for radio groups
   variantOptions: RadioOption[] = [
@@ -53,5 +62,13 @@ export class ButtonEditorComponent {
   }
   handleSizeChange(newVariant: ButtonSize) {
     this.size.update(() => newVariant);
+  }
+  // Handlers for color changes
+  handleColorChange(newColor: string) {
+    this.color.set(newColor);
+  }
+
+  handleBackgroundColorChange(newBackgroundColor: string) {
+    this.backgroundColor.set(newBackgroundColor);
   }
 }

@@ -3,6 +3,7 @@
     *ngFor="let option of options(); let i = index; trackBy: trackByValue"
     type="button"
     variant="tertiary"
+    class="rounded-none"
     [class]="getButtonClasses(option, i)"
     [attr.aria-pressed]="value() === option.value"
     (click)="selectOption(option.value)"

@@ -3,6 +3,7 @@
     [href]="href()"
     [attr.target]="target()"
     [ngClass]="classes"
+    [ngStyle]="styles"
     [attr.aria-disabled]="isInActive ? 'true' : null"
     (click)="isInActive ? $event.preventDefault() : null"
   >
@@ -34,7 +35,7 @@
   </a>
 </ng-container>
 <ng-template #buttonTemplate>
-  <button [type]="type()" [ngClass]="classes" [disabled]="isInActive">
+  <button [type]="type()" [ngClass]="classes" [ngStyle]="styles" [disabled]="isInActive">
     <ng-container *ngIf="startIcon()">
       <span class="mr-2"><i [ngClass]="startIcon()"></i></span>
     </ng-container>
