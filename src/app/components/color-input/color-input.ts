@@ -100,22 +100,3 @@ export class ColorInputComponent implements OnInit {
     return tempElement.style.color !== '';
   }
 }
-
-// Usage example:
-/*
-In your parent component template:
-<app-color-picker 
-  [value]="selectedColor" 
-  (valueChange)="onColorChange($event)">
-</app-color-picker>
-
-In your parent component:
-export class ParentComponent {
-  selectedColor = '#3742fa';
-
-  onColorChange(color: string) {
-    this.selectedColor = color;
-    console.log('Selected color:', color);
-  }
-}
-*/

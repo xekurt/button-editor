@@ -95,6 +95,12 @@
           <span class="font-medium">Size:</span>
           <span class="ml-4 rounded px-2 py-1 text-xs">{{ size() }}</span>
         </div>
+        <div
+          *ngIf="accessibilityWarning"
+          class="bg-warning-light text-primary-dark mt-2 rounded-md p-4 text-sm"
+        >
+          {{ accessibilityWarning }}
+        </div>
       </div>
     </div>
   </div>
