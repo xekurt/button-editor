@@ -96,6 +96,7 @@ export class ButtonEditorComponent {
   get isAccessible(): boolean {
     const fg = this.color() || '#fff';
     const bg = this.variant() === 'primary' ? this.backgroundColor() || '#4338CA' : '#fff';
+    if (this.variant() !== 'primary') return true;
     return this.contrastRatio(fg, bg) >= 4.5;
   }
 

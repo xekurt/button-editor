@@ -1,6 +1,47 @@
 <!-- button-configurator.component.html -->
 <div class="mx-auto">
   <!-- Configuration Panel -->
+  <!-- Button Preview -->
+  <div class="dark:border-primary-light my-md rounded-lg border border-gray-200 p-8 text-center">
+    <h2 class="mb-8 text-xl font-semibold">Button Preview</h2>
+    <!-- Your existing button component -->
+    <div class="mb-8">
+      <app-custom-button
+        [variant]="variant()"
+        [state]="state()"
+        [size]="size()"
+        [color]="color()"
+        [backgroundColor]="variant()==='primary' && backgroundColor()"
+        (click)="onButtonClick()"
+      >
+        Click Me
+      </app-custom-button>
+    </div>
+    <!-- Current configuration display -->
+    <div class="inline-block rounded-lg p-4 text-left">
+      <p class="mb-3 font-semibold">Current Configuration:</p>
+      <div class="space-y-1 text-sm">
+        <div class="flex justify-between">
+          <span class="font-medium">Variant:</span>
+          <span class="ml-4 rounded px-2 py-1 text-xs">{{ variant() }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-medium">State:</span>
+          <span class="ml-4 rounded px-2 py-1 text-xs">{{ state() }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-medium">Size:</span>
+          <span class="ml-4 rounded px-2 py-1 text-xs">{{ size() }}</span>
+        </div>
+        <div
+          *ngIf="accessibilityWarning"
+          class="bg-warning-light text-primary-dark mt-2 rounded-md p-4 text-sm"
+        >
+          {{ accessibilityWarning }}
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="dark:border-primary-light mb-8 rounded-lg border border-gray-200 p-6">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <!-- Variant Radio Group -->
@@ -56,51 +97,10 @@
       <div class="text-center">
         <h3 class="mb-sm text-sm font-medium">Background Color</h3>
         <app-color-input
+          [disabled]="variant()!=='primary'"
           [value]="backgroundColor()"
           (valueChange)="handleBackgroundColorChange($event)"
         />
-      </div>
-    </div>
-  </div>
-
-  <!-- Button Preview -->
-  <div class="dark:border-primary-light my-md rounded-lg border border-gray-200 p-8 text-center">
-    <h2 class="mb-8 text-xl font-semibold">Button Preview</h2>
-    <!-- Your existing button component -->
-    <div class="mb-8">
-      <app-custom-button
-        [variant]="variant()"
-        [state]="state()"
-        [size]="size()"
-        [color]="color()"
-        [backgroundColor]="variant()==='primary' && backgroundColor()"
-        (click)="onButtonClick()"
-      >
-        Click Me
-      </app-custom-button>
-    </div>
-    <!-- Current configuration display -->
-    <div class="inline-block rounded-lg p-4 text-left">
-      <p class="mb-3 font-semibold">Current Configuration:</p>
-      <div class="space-y-1 text-sm">
-        <div class="flex justify-between">
-          <span class="font-medium">Variant:</span>
-          <span class="ml-4 rounded px-2 py-1 text-xs">{{ variant() }}</span>
-        </div>
-        <div class="flex justify-between">
-          <span class="font-medium">State:</span>
-          <span class="ml-4 rounded px-2 py-1 text-xs">{{ state() }}</span>
-        </div>
-        <div class="flex justify-between">
-          <span class="font-medium">Size:</span>
-          <span class="ml-4 rounded px-2 py-1 text-xs">{{ size() }}</span>
-        </div>
-        <div
-          *ngIf="accessibilityWarning"
-          class="bg-warning-light text-primary-dark mt-2 rounded-md p-4 text-sm"
-        >
-          {{ accessibilityWarning }}
-        </div>
       </div>
     </div>
   </div>

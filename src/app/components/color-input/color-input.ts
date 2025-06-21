@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ColorInputComponent implements OnInit {
   @Input() value: string = '#000000';
+  @Input() disabled: boolean = false;
   @Output() valueChange = new EventEmitter<string>();
 
   isOpen = false;
@@ -56,6 +57,7 @@ export class ColorInputComponent implements OnInit {
   }
 
   togglePicker() {
+    if (this.disabled) return;
     this.isOpen = !this.isOpen;
     if (this.isOpen) {
       this.inputValue = this.value;
@@ -67,11 +69,13 @@ export class ColorInputComponent implements OnInit {
   }
 
   onColorChange(event: Event) {
+    if (this.disabled) return;
     const target = event.target as HTMLInputElement;
     this.selectColor(target.value);
   }
 
   onInputChange() {
+    if (this.disabled) return;
     const color = this.inputValue.trim();
     if (this.isValidColor(color)) {
       this.selectColor(color);
@@ -82,6 +86,7 @@ export class ColorInputComponent implements OnInit {
   }
 
   selectColor(color: string) {
+    if (this.disabled) return;
     this.value = color;
     this.inputValue = color;
     this.valueChange.emit(color);
