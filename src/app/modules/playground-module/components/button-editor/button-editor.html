@@ -7,11 +7,11 @@
     <!-- Your existing button component -->
     <div class="mb-8">
       <app-custom-button
-        [variant]="variant()"
-        [state]="state()"
-        [size]="size()"
-        [color]="color()"
-        [backgroundColor]="variant()==='primary' && backgroundColor()"
+        [variant]="buttonEditor.variant()"
+        [state]="buttonEditor.state()"
+        [size]="buttonEditor.size()"
+        [color]="buttonEditor.color()"
+        [backgroundColor]="buttonEditor.variant()==='primary' && buttonEditor.backgroundColor()"
         (click)="onButtonClick()"
       >
         Click Me
@@ -23,21 +23,21 @@
       <div class="space-y-1 text-sm">
         <div class="flex justify-between">
           <span class="font-medium">Variant:</span>
-          <span class="ml-4 rounded px-2 py-1 text-xs">{{ variant() }}</span>
+          <span class="ml-4 rounded px-2 py-1 text-xs">{{ buttonEditor.variant() }}</span>
         </div>
         <div class="flex justify-between">
           <span class="font-medium">State:</span>
-          <span class="ml-4 rounded px-2 py-1 text-xs">{{ state() }}</span>
+          <span class="ml-4 rounded px-2 py-1 text-xs">{{ buttonEditor.state() }}</span>
         </div>
         <div class="flex justify-between">
           <span class="font-medium">Size:</span>
-          <span class="ml-4 rounded px-2 py-1 text-xs">{{ size() }}</span>
+          <span class="ml-4 rounded px-2 py-1 text-xs">{{ buttonEditor.size() }}</span>
         </div>
         <div
-          *ngIf="accessibilityWarning"
+          *ngIf="buttonEditor.accessibilityWarning"
           class="bg-warning-light text-primary-dark mt-2 rounded-md p-4 text-sm"
         >
-          {{ accessibilityWarning }}
+          {{ buttonEditor.accessibilityWarning }}
         </div>
       </div>
     </div>
@@ -48,9 +48,9 @@
       <div class="flex flex-col items-center space-y-4">
         <h3 class="text-sm font-medium">Variant</h3>
         <app-radio-group
-          [options]="variantOptions"
-          [ngModel]="variant()"
-          (ngModelChange)="handleVariantChange($event)"
+          [options]="buttonEditor.variantOptions"
+          [ngModel]="buttonEditor.variant()"
+          (ngModelChange)="buttonEditor.handleVariantChange($event)"
           ariaLabel="Button variant selection"
           size="medium"
           variant="outlined"
@@ -62,9 +62,9 @@
       <div class="flex flex-col items-center space-y-4">
         <h3 class="text-sm font-medium">State</h3>
         <app-radio-group
-          [options]="stateOptions"
-          [ngModel]="state()"
-          (ngModelChange)="handleStateChange($event)"
+          [options]="buttonEditor.stateOptions"
+          [ngModel]="buttonEditor.state()"
+          (ngModelChange)="buttonEditor.handleStateChange($event)"
           ariaLabel="Button state selection"
           size="medium"
           variant="outlined"
@@ -76,9 +76,9 @@
       <div class="flex flex-col items-center space-y-4">
         <h3 class="text-sm font-medium">Size</h3>
         <app-radio-group
-          [options]="sizeOptions"
-          [ngModel]="size()"
-          (ngModelChange)="handleSizeChange($event)"
+          [options]="buttonEditor.sizeOptions"
+          [ngModel]="buttonEditor.size()"
+          (ngModelChange)="buttonEditor.handleSizeChange($event)"
           ariaLabel="Button size selection"
           size="medium"
           variant="outlined"
@@ -92,14 +92,17 @@
     <div class="my-md flex items-center justify-evenly">
       <div class="text-center">
         <h3 class="mb-sm text-sm font-medium">Text and border color</h3>
-        <app-color-input [value]="color()" (valueChange)="handleColorChange($event)" />
+        <app-color-input
+          [value]="buttonEditor.color()"
+          (valueChange)="buttonEditor.handleColorChange($event)"
+        />
       </div>
       <div class="text-center">
         <h3 class="mb-sm text-sm font-medium">Background Color</h3>
         <app-color-input
-          [disabled]="variant()!=='primary'"
-          [value]="backgroundColor()"
-          (valueChange)="handleBackgroundColorChange($event)"
+          [disabled]="buttonEditor.variant()!=='primary'"
+          [value]="buttonEditor.backgroundColor()"
+          (valueChange)="buttonEditor.handleBackgroundColorChange($event)"
         />
       </div>
     </div>
