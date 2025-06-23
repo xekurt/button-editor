@@ -8,7 +8,7 @@ export class ButtonEditorService {
   state = signal<ButtonState>('default');
   size = signal<ButtonSize>('medium');
   color = signal<string | undefined>('');
-  backgroundColor = signal<string | undefined>('#4338CA');
+  backgroundColor = signal<string | undefined>('#800080');
 
   variantOptions: RadioOption[] = [
     { value: 'primary', label: 'Primary' },
