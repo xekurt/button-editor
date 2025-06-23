@@ -1,125 +1,124 @@
 <!-- button-configurator.component.html -->
 <div class="mx-auto">
-  <!-- Configuration Panel -->
-  <!-- Button Preview -->
-  <div class="dark:border-primary-light my-md rounded-lg border border-gray-200 p-8 text-center">
-    <h2 class="mb-8 text-xl font-semibold">Button Preview</h2>
-    <!-- Your existing button component -->
-    <div class="mb-8 flex flex-col items-center justify-around">
-      <div
-        class="dark:border-primary-light flex w-full flex-col rounded-lg border border-gray-200 p-6 md:w-1/3"
-      >
-        <app-custom-button
-          [variant]="buttonEditor.variant()"
-          [state]="buttonEditor.state()"
-          [size]="buttonEditor.size()"
-          [color]="buttonEditor.color()"
-          [backgroundColor]="buttonEditor.variant()==='primary' && buttonEditor.backgroundColor()"
-          (click)="onButtonClick()"
-          class="mb-md"
-        >
-          Your button
-        </app-custom-button>
-        <div class="inline-block rounded-lg p-4 text-left">
-          <p class="mb-3 font-semibold">Current Configuration:</p>
-          <div class="space-y-1 text-sm">
-            <div class="flex justify-between">
-              <span class="font-medium">Variant:</span>
-              <span class="ml-4 rounded px-2 py-1 text-xs">{{ buttonEditor.variant() }}</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="font-medium">State:</span>
-              <span class="ml-4 rounded px-2 py-1 text-xs">{{ buttonEditor.state() }}</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="font-medium">Size:</span>
-              <span class="ml-4 rounded px-2 py-1 text-xs">{{ buttonEditor.size() }}</span>
-            </div>
-            <div
-              *ngIf="buttonEditor.accessibilityWarning"
-              class="bg-warning-light text-primary-dark mt-2 rounded-md p-4 text-sm"
-            >
-              {{ buttonEditor.accessibilityWarning }}
-            </div>
+  <!-- Two-column layout for customization and preview -->
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+    <!-- Left: Customization Controls -->
+    <div class="dark:border-primary-light mb-8 h-fit rounded-lg border border-gray-200 p-6">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-1">
+        <!-- Variant Radio Group -->
+        <div class="flex flex-col items-center space-y-4">
+          <h3 class="text-sm font-medium">Variant</h3>
+          <app-radio-group
+            [options]="buttonEditor.variantOptions"
+            [ngModel]="buttonEditor.variant()"
+            (ngModelChange)="buttonEditor.handleVariantChange($event)"
+            ariaLabel="Button variant selection"
+            size="medium"
+            variant="outlined"
+          >
+          </app-radio-group>
+        </div>
+        <!-- State Radio Group -->
+        <div class="flex flex-col items-center space-y-4">
+          <h3 class="text-sm font-medium">State</h3>
+          <app-radio-group
+            [options]="buttonEditor.stateOptions"
+            [ngModel]="buttonEditor.state()"
+            (ngModelChange)="buttonEditor.handleStateChange($event)"
+            ariaLabel="Button state selection"
+            size="medium"
+            variant="outlined"
+          >
+          </app-radio-group>
+        </div>
+        <!-- Size Radio Group -->
+        <div class="flex flex-col items-center space-y-4">
+          <h3 class="text-sm font-medium">Size</h3>
+          <app-radio-group
+            [options]="buttonEditor.sizeOptions"
+            [ngModel]="buttonEditor.size()"
+            (ngModelChange)="buttonEditor.handleSizeChange($event)"
+            ariaLabel="Button size selection"
+            size="medium"
+            variant="outlined"
+          >
+          </app-radio-group>
+        </div>
+        <!-- Color Inputs -->
+        <div class="my-md flex flex-col items-center justify-evenly gap-6">
+          <div class="text-center">
+            <h3 class="mb-sm text-sm font-medium">Text and border color</h3>
+            <app-color-input
+              [value]="buttonEditor.color()"
+              (valueChange)="buttonEditor.handleColorChange($event)"
+            />
+          </div>
+          <div class="text-center">
+            <h3 class="mb-sm text-sm font-medium">Background Color</h3>
+            <app-color-input
+              [disabled]="buttonEditor.variant()!=='primary'"
+              [value]="buttonEditor.backgroundColor()"
+              (valueChange)="buttonEditor.handleBackgroundColorChange($event)"
+            />
           </div>
         </div>
       </div>
-      <!-- Code Output Section -->
-      <div
-        class="dark:border-primary-light mt-6 w-full rounded-lg border border-gray-200 p-6 md:w-1/2"
-      >
-        <h3 class="mb-4 text-lg font-semibold">Code Output</h3>
-        <pre
-          class="w-full overflow-x-auto rounded bg-neutral-100 p-4 text-start text-xs select-all dark:bg-gray-900 dark:text-white"
-        ><code class="text-start">{{
-          buttonEditor.getButtonCode()
-        }}</code></pre>
-      </div>
     </div>
-    <!-- Current configuration display -->
-  </div>
-  <div class="dark:border-primary-light mb-8 rounded-lg border border-gray-200 p-6">
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-      <!-- Variant Radio Group -->
-      <div class="flex flex-col items-center space-y-4">
-        <h3 class="text-sm font-medium">Variant</h3>
-        <app-radio-group
-          [options]="buttonEditor.variantOptions"
-          [ngModel]="buttonEditor.variant()"
-          (ngModelChange)="buttonEditor.handleVariantChange($event)"
-          ariaLabel="Button variant selection"
-          size="medium"
-          variant="outlined"
+    <!-- Right: Button Preview and Code Output -->
+    <div
+      class="dark:border-primary-light my-md flex flex-col items-center justify-center rounded-lg border border-gray-200 p-8 text-center"
+    >
+      <h2 class="mb-8 text-xl font-semibold">Button Preview</h2>
+      <div class="flex w-full flex-col items-center justify-around">
+        <div
+          class="dark:border-primary-light flex w-full flex-col rounded-lg border border-gray-200 p-6 md:w-3/4"
         >
-        </app-radio-group>
-      </div>
-
-      <!-- State Radio Group -->
-      <div class="flex flex-col items-center space-y-4">
-        <h3 class="text-sm font-medium">State</h3>
-        <app-radio-group
-          [options]="buttonEditor.stateOptions"
-          [ngModel]="buttonEditor.state()"
-          (ngModelChange)="buttonEditor.handleStateChange($event)"
-          ariaLabel="Button state selection"
-          size="medium"
-          variant="outlined"
+          <app-custom-button
+            [variant]="buttonEditor.variant()"
+            [state]="buttonEditor.state()"
+            [size]="buttonEditor.size()"
+            [color]="buttonEditor.color()"
+            [backgroundColor]="buttonEditor.variant()==='primary' && buttonEditor.backgroundColor()"
+            (click)="onButtonClick()"
+            class="mb-md"
+          >
+            Your button
+          </app-custom-button>
+          <div class="inline-block rounded-lg p-4 text-left">
+            <p class="mb-3 font-semibold">Current Configuration:</p>
+            <div class="space-y-1 text-sm">
+              <div class="flex justify-between">
+                <span class="font-medium">Variant:</span>
+                <span class="ml-4 rounded px-2 py-1 text-xs">{{ buttonEditor.variant() }}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="font-medium">State:</span>
+                <span class="ml-4 rounded px-2 py-1 text-xs">{{ buttonEditor.state() }}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="font-medium">Size:</span>
+                <span class="ml-4 rounded px-2 py-1 text-xs">{{ buttonEditor.size() }}</span>
+              </div>
+              <div
+                *ngIf="buttonEditor.accessibilityWarning"
+                class="bg-warning-light text-primary-dark mt-2 rounded-md p-4 text-sm"
+              >
+                {{ buttonEditor.accessibilityWarning }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Code Output Section -->
+        <div
+          class="dark:border-primary-light mt-6 w-full rounded-lg border border-gray-200 p-6 md:w-3/4"
         >
-        </app-radio-group>
-      </div>
-
-      <!-- Size Radio Group -->
-      <div class="flex flex-col items-center space-y-4">
-        <h3 class="text-sm font-medium">Size</h3>
-        <app-radio-group
-          [options]="buttonEditor.sizeOptions"
-          [ngModel]="buttonEditor.size()"
-          (ngModelChange)="buttonEditor.handleSizeChange($event)"
-          ariaLabel="Button size selection"
-          size="medium"
-          variant="outlined"
-        >
-        </app-radio-group>
-      </div>
-    </div>
-
-    <!-- Color Inputs -->
-
-    <div class="my-md flex items-center justify-evenly">
-      <div class="text-center">
-        <h3 class="mb-sm text-sm font-medium">Text and border color</h3>
-        <app-color-input
-          [value]="buttonEditor.color()"
-          (valueChange)="buttonEditor.handleColorChange($event)"
-        />
-      </div>
-      <div class="text-center">
-        <h3 class="mb-sm text-sm font-medium">Background Color</h3>
-        <app-color-input
-          [disabled]="buttonEditor.variant()!=='primary'"
-          [value]="buttonEditor.backgroundColor()"
-          (valueChange)="buttonEditor.handleBackgroundColorChange($event)"
-        />
+          <h3 class="mb-4 text-lg font-semibold">Code Output</h3>
+          <pre
+            class="w-full overflow-x-auto rounded bg-neutral-100 p-4 text-start text-xs select-all dark:bg-gray-900 dark:text-white"
+          ><code class="text-start">{{
+            buttonEditor.getButtonCode()
+          }}</code></pre>
+        </div>
       </div>
     </div>
   </div>
