@@ -43,6 +43,24 @@ export class ButtonEditorService {
   handleBackgroundColorChange(newBackgroundColor: string) {
     this.backgroundColor.set(newBackgroundColor);
   }
+  getButtonCode(): string {
+    const variant = this.variant();
+    const state = this.state();
+    const size = this.size();
+    const color = this.color();
+    const backgroundColor = this.backgroundColor();
+    let code = `<app-custom-button`;
+    code += `\n  variant=\"${variant}\"`;
+    code += `\n  state=\"${state}\"`;
+    code += `\n  size=\"${size}\"`;
+    if (color) code += `\n  color=\"${color}\"`;
+    if (variant === 'primary' && backgroundColor)
+      code += `\n  backgroundColor=\"${backgroundColor}\"`;
+    code += `\n>`;
+    code += `\n  Your Button`;
+    code += `\n</app-custom-button>`;
+    return code;
+  }
 
   private luminance(hex: string): number {
     hex = hex.replace('#', '');
